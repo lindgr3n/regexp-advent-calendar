@@ -418,7 +418,7 @@ puts "4532015112830366".match?(cc_regex)  # true`
             <ul>
                 <li><code>&lt;([a-z]+)</code> - Opening tag name (captured)</li>
                 <li><code>([^&lt;]+)*</code> - Attributes</li>
-                <li><code>(?:&gt;(.*)&lt;\\/\\1&gt;</code> - Content and closing tag (backreference)</li>
+                <li><code>(?:&gt;(.*)&lt;\\/\\\\1&gt;</code> - Content and closing tag (backreference)</li>
                 <li><code>|\\s+\\/&gt;)</code> - Or self-closing tag</li>
             </ul>
         `,
@@ -457,7 +457,7 @@ preg_match($htmlRegex, $html, $matches);
 print_r($matches[0]); // <div>Hello</div>
 ?>`,
 
-            ruby: `html_regex = /<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)/i
+            ruby: `html_regex = /<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/i
 
 html = "<div>Hello</div>"
 match = html.match(html_regex)
@@ -957,7 +957,7 @@ echo camelToSnake("myVariableName"); // "my_variable_name"
             ruby: `camel_regex = /([a-z0-9])([A-Z])/
 
 def camel_to_snake(str)
-    str.gsub(camel_regex, '\1_\2').downcase
+    str.gsub(camel_regex, '\\1_\\2').downcase
 end
 
 puts camel_to_snake("myVariableName")  # "my_variable_name"`
@@ -1023,7 +1023,7 @@ puts plain_text  # "Hello world!"`
                 <li><code>\\b</code> - Word boundary</li>
                 <li><code>(\\w+)</code> - Capture a word</li>
                 <li><code>\\s+</code> - One or more spaces</li>
-                <li><code>\\1</code> - Backreference to first captured group</li>
+                <li><code>\\\\1</code> - Backreference to first captured group</li>
             </ul>
             <p>Finds: "the the", "is is", etc.</p>
         `,
@@ -1068,13 +1068,13 @@ $fixed = preg_replace($duplicateRegex, "$1", $text);
 echo $fixed; // "This is a test of the duplicate finder."
 ?>`,
 
-            ruby: `duplicate_regex = /\b(\w+)\s+\1\b/i
+            ruby: `duplicate_regex = /\\b(\\w+)\\s+\\1\\b/i
 
 text = "This is is a test test of the the duplicate finder."
 duplicates = text.scan(duplicate_regex).flatten
 puts duplicates.inspect  # ["is", "test", "the"]
 
-fixed = text.gsub(duplicate_regex, '\1')
+fixed = text.gsub(duplicate_regex, '\\1')
 puts fixed  # "This is a test of the duplicate finder."`
         }
     },
