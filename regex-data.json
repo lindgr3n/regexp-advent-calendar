@@ -1,0 +1,290 @@
+{
+  "1": {
+    "title": "Email Validation",
+    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    "description": "\n            <p>A basic email validation pattern that checks for common email formats.</p>\n            <ul>\n                <li><code>^</code> - Start of string</li>\n                <li><code>[a-zA-Z0-9._%+-]+</code> - One or more valid characters before @</li>\n                <li><code>@</code> - Literal @ symbol</li>\n                <li><code>[a-zA-Z0-9.-]+</code> - Domain name</li>\n                <li><code>\\.</code> - Literal dot</li>\n                <li><code>[a-zA-Z]{2,}</code> - Top-level domain (2+ letters)</li>\n                <li><code>$</code> - End of string</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;\n\nconst email = \"user@example.com\";\nconsole.log(emailRegex.test(email)); // true\n\nconst invalidEmail = \"invalid@email\";\nconsole.log(emailRegex.test(invalidEmail)); // false",
+      "python": "import re\n\nemail_regex = r\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\"\n\nemail = \"user@example.com\"\nprint(bool(re.match(email_regex, email)))  # True\n\ninvalid_email = \"invalid@email\"\nprint(bool(re.match(email_regex, invalid_email)))  # False",
+      "java": "import java.util.regex.*;\n\nString emailRegex = \"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$\";\nPattern pattern = Pattern.compile(emailRegex);\n\nString email = \"user@example.com\";\nMatcher matcher = pattern.matcher(email);\nSystem.out.println(matcher.matches()); // true",
+      "php": "<?php\n$emailRegex = \"/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/\";\n\n$email = \"user@example.com\";\necho preg_match($emailRegex, $email); // 1 (true)\n\n$invalidEmail = \"invalid@email\";\necho preg_match($emailRegex, $invalidEmail); // 0 (false)\n?>",
+      "ruby": "email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/\n\nemail = \"user@example.com\"\nputs email.match?(email_regex)  # true\n\ninvalid_email = \"invalid@email\"\nputs invalid_email.match?(email_regex)  # false"
+    }
+  },
+  "2": {
+    "title": "Phone Number (US Format)",
+    "pattern": "^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$",
+    "description": "\n            <p>Matches US phone numbers in various formats.</p>\n            <ul>\n                <li><code>\\(?\\d{3}\\)?</code> - Area code with optional parentheses</li>\n                <li><code>[\\s.-]?</code> - Optional separator (space, dot, or dash)</li>\n                <li><code>\\d{3}</code> - First 3 digits</li>\n                <li><code>\\d{4}</code> - Last 4 digits</li>\n            </ul>\n            <p>Matches: (123) 456-7890, 123-456-7890, 123.456.7890, 1234567890</p>\n        ",
+    "examples": {
+      "javascript": "const phoneRegex = /^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$/;\n\nconsole.log(phoneRegex.test(\"(123) 456-7890\")); // true\nconsole.log(phoneRegex.test(\"123-456-7890\")); // true\nconsole.log(phoneRegex.test(\"1234567890\")); // true",
+      "python": "import re\n\nphone_regex = r\"^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$\"\n\nprint(bool(re.match(phone_regex, \"(123) 456-7890\")))  # True\nprint(bool(re.match(phone_regex, \"123-456-7890\")))  # True",
+      "java": "String phoneRegex = \"^\\\\(?\\\\d{3}\\\\)?[\\\\s.-]?\\\\d{3}[\\\\s.-]?\\\\d{4}$\";\nPattern pattern = Pattern.compile(phoneRegex);\n\nSystem.out.println(pattern.matcher(\"(123) 456-7890\").matches()); // true\nSystem.out.println(pattern.matcher(\"123-456-7890\").matches()); // true",
+      "php": "<?php\n$phoneRegex = \"/^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$/\";\n\necho preg_match($phoneRegex, \"(123) 456-7890\"); // 1\necho preg_match($phoneRegex, \"123-456-7890\"); // 1\n?>",
+      "ruby": "phone_regex = /^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$/\n\nputs \"(123) 456-7890\".match?(phone_regex)  # true\nputs \"123-456-7890\".match?(phone_regex)  # true"
+    }
+  },
+  "3": {
+    "title": "URL Validation",
+    "pattern": "^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$",
+    "description": "\n            <p>Validates HTTP and HTTPS URLs.</p>\n            <ul>\n                <li><code>https?</code> - HTTP or HTTPS (s is optional)</li>\n                <li><code>:\\/\\/</code> - Protocol separator</li>\n                <li><code>([\\w\\d-]+\\.)+</code> - Domain parts (can have multiple)</li>\n                <li><code>[\\w\\d-]+</code> - Top-level domain</li>\n                <li><code>(\\/[^\\s]*)?</code> - Optional path</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const urlRegex = /^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$/;\n\nconsole.log(urlRegex.test(\"https://example.com\")); // true\nconsole.log(urlRegex.test(\"http://subdomain.example.com/path\")); // true\nconsole.log(urlRegex.test(\"ftp://example.com\")); // false",
+      "python": "import re\n\nurl_regex = r\"^(https?://)([\\w\\d-]+\\.)+[\\w\\d-]+(/[^\\s]*)?$\"\n\nprint(bool(re.match(url_regex, \"https://example.com\")))  # True\nprint(bool(re.match(url_regex, \"ftp://example.com\")))  # False",
+      "java": "String urlRegex = \"^(https?://)([\\\\w\\\\d-]+\\\\.)+[\\\\w\\\\d-]+(/[^\\\\s]*)?$\";\nPattern pattern = Pattern.compile(urlRegex);\n\nSystem.out.println(pattern.matcher(\"https://example.com\").matches()); // true",
+      "php": "<?php\n$urlRegex = \"/^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$/\";\n\necho preg_match($urlRegex, \"https://example.com\"); // 1\n?>",
+      "ruby": "url_regex = /^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$/\n\nputs \"https://example.com\".match?(url_regex)  # true"
+    }
+  },
+  "4": {
+    "title": "Date Format (YYYY-MM-DD)",
+    "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+    "description": "\n            <p>Matches ISO 8601 date format.</p>\n            <ul>\n                <li><code>\\d{4}</code> - Year (4 digits)</li>\n                <li><code>(0[1-9]|1[0-2])</code> - Month (01-12)</li>\n                <li><code>(0[1-9]|[12]\\d|3[01])</code> - Day (01-31)</li>\n            </ul>\n            <p>Note: This doesn't validate actual calendar dates (e.g., Feb 30 would match)</p>\n        ",
+    "examples": {
+      "javascript": "const dateRegex = /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$/;\n\nconsole.log(dateRegex.test(\"2024-12-25\")); // true\nconsole.log(dateRegex.test(\"2024-01-01\")); // true\nconsole.log(dateRegex.test(\"2024-13-01\")); // false",
+      "python": "import re\n\ndate_regex = r\"^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$\"\n\nprint(bool(re.match(date_regex, \"2024-12-25\")))  # True\nprint(bool(re.match(date_regex, \"2024-13-01\")))  # False",
+      "java": "String dateRegex = \"^\\\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01])$\";\nPattern pattern = Pattern.compile(dateRegex);\n\nSystem.out.println(pattern.matcher(\"2024-12-25\").matches()); // true",
+      "php": "<?php\n$dateRegex = \"/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$/\";\n\necho preg_match($dateRegex, \"2024-12-25\"); // 1\n?>",
+      "ruby": "date_regex = /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$/\n\nputs \"2024-12-25\".match?(date_regex)  # true"
+    }
+  },
+  "5": {
+    "title": "Hexadecimal Color Code",
+    "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+    "description": "\n            <p>Matches hex color codes in both 3 and 6 digit formats.</p>\n            <ul>\n                <li><code>#</code> - Hash symbol</li>\n                <li><code>([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})</code> - Either 6 or 3 hex digits</li>\n            </ul>\n            <p>Matches: #FFF, #FFFFFF, #a1b2c3</p>\n        ",
+    "examples": {
+      "javascript": "const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;\n\nconsole.log(hexRegex.test(\"#FFF\")); // true\nconsole.log(hexRegex.test(\"#FFFFFF\")); // true\nconsole.log(hexRegex.test(\"#a1b2c3\")); // true\nconsole.log(hexRegex.test(\"#GGGGGG\")); // false",
+      "python": "import re\n\nhex_regex = r\"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$\"\n\nprint(bool(re.match(hex_regex, \"#FFF\")))  # True\nprint(bool(re.match(hex_regex, \"#FFFFFF\")))  # True\nprint(bool(re.match(hex_regex, \"#GGGGGG\")))  # False",
+      "java": "String hexRegex = \"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$\";\nPattern pattern = Pattern.compile(hexRegex);\n\nSystem.out.println(pattern.matcher(\"#FFF\").matches()); // true\nSystem.out.println(pattern.matcher(\"#FFFFFF\").matches()); // true",
+      "php": "<?php\n$hexRegex = \"/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/\";\n\necho preg_match($hexRegex, \"#FFF\"); // 1\necho preg_match($hexRegex, \"#FFFFFF\"); // 1\n?>",
+      "ruby": "hex_regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/\n\nputs \"#FFF\".match?(hex_regex)  # true\nputs \"#FFFFFF\".match?(hex_regex)  # true"
+    }
+  },
+  "6": {
+    "title": "Username Validation",
+    "pattern": "^[a-zA-Z0-9_-]{3,16}$",
+    "description": "\n            <p>Validates usernames with specific requirements.</p>\n            <ul>\n                <li><code>[a-zA-Z0-9_-]</code> - Allowed characters: letters, numbers, underscore, hyphen</li>\n                <li><code>{3,16}</code> - Length between 3 and 16 characters</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;\n\nconsole.log(usernameRegex.test(\"john_doe\")); // true\nconsole.log(usernameRegex.test(\"user123\")); // true\nconsole.log(usernameRegex.test(\"ab\")); // false (too short)\nconsole.log(usernameRegex.test(\"user@name\")); // false (invalid char)",
+      "python": "import re\n\nusername_regex = r\"^[a-zA-Z0-9_-]{3,16}$\"\n\nprint(bool(re.match(username_regex, \"john_doe\")))  # True\nprint(bool(re.match(username_regex, \"ab\")))  # False",
+      "java": "String usernameRegex = \"^[a-zA-Z0-9_-]{3,16}$\";\nPattern pattern = Pattern.compile(usernameRegex);\n\nSystem.out.println(pattern.matcher(\"john_doe\").matches()); // true\nSystem.out.println(pattern.matcher(\"ab\").matches()); // false",
+      "php": "<?php\n$usernameRegex = \"/^[a-zA-Z0-9_-]{3,16}$/\";\n\necho preg_match($usernameRegex, \"john_doe\"); // 1\necho preg_match($usernameRegex, \"ab\"); // 0\n?>",
+      "ruby": "username_regex = /^[a-zA-Z0-9_-]{3,16}$/\n\nputs \"john_doe\".match?(username_regex)  # true\nputs \"ab\".match?(username_regex)  # false"
+    }
+  },
+  "7": {
+    "title": "IP Address (IPv4)",
+    "pattern": "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+    "description": "\n            <p>Validates IPv4 addresses with proper range checking.</p>\n            <ul>\n                <li><code>25[0-5]</code> - 250-255</li>\n                <li><code>2[0-4][0-9]</code> - 200-249</li>\n                <li><code>[01]?[0-9][0-9]?</code> - 0-199</li>\n                <li>Each octet must be 0-255</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const ipRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;\n\nconsole.log(ipRegex.test(\"192.168.1.1\")); // true\nconsole.log(ipRegex.test(\"255.255.255.255\")); // true\nconsole.log(ipRegex.test(\"256.1.1.1\")); // false",
+      "python": "import re\n\nip_regex = r\"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$\"\n\nprint(bool(re.match(ip_regex, \"192.168.1.1\")))  # True\nprint(bool(re.match(ip_regex, \"256.1.1.1\")))  # False",
+      "java": "String ipRegex = \"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$\";\nPattern pattern = Pattern.compile(ipRegex);\n\nSystem.out.println(pattern.matcher(\"192.168.1.1\").matches()); // true",
+      "php": "<?php\n$ipRegex = \"/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/\";\n\necho preg_match($ipRegex, \"192.168.1.1\"); // 1\n?>",
+      "ruby": "ip_regex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/\n\nputs \"192.168.1.1\".match?(ip_regex)  # true"
+    }
+  },
+  "8": {
+    "title": "Password Strength",
+    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+    "description": "\n            <p>Validates strong passwords with multiple requirements.</p>\n            <ul>\n                <li><code>(?=.*[a-z])</code> - At least one lowercase letter</li>\n                <li><code>(?=.*[A-Z])</code> - At least one uppercase letter</li>\n                <li><code>(?=.*\\d)</code> - At least one digit</li>\n                <li><code>(?=.*[@$!%*?&])</code> - At least one special character</li>\n                <li><code>{8,}</code> - Minimum 8 characters</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/;\n\nconsole.log(passwordRegex.test(\"Password123!\")); // true\nconsole.log(passwordRegex.test(\"weakpass\")); // false\nconsole.log(passwordRegex.test(\"NoSpecial1\")); // false",
+      "python": "import re\n\npassword_regex = r\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$\"\n\nprint(bool(re.match(password_regex, \"Password123!\")))  # True\nprint(bool(re.match(password_regex, \"weakpass\")))  # False",
+      "java": "String passwordRegex = \"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[@$!%*?&])[A-Za-z\\\\d@$!%*?&]{8,}$\";\nPattern pattern = Pattern.compile(passwordRegex);\n\nSystem.out.println(pattern.matcher(\"Password123!\").matches()); // true",
+      "php": "<?php\n$passwordRegex = \"/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/\";\n\necho preg_match($passwordRegex, \"Password123!\"); // 1\n?>",
+      "ruby": "password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/\n\nputs \"Password123!\".match?(password_regex)  # true"
+    }
+  },
+  "9": {
+    "title": "Credit Card Number",
+    "pattern": "^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$",
+    "description": "\n            <p>Validates major credit card formats.</p>\n            <ul>\n                <li><code>4[0-9]{12}(?:[0-9]{3})?</code> - Visa (13 or 16 digits, starts with 4)</li>\n                <li><code>5[1-5][0-9]{14}</code> - Mastercard (16 digits, starts with 51-55)</li>\n                <li><code>3[47][0-9]{13}</code> - Amex (15 digits, starts with 34 or 37)</li>\n            </ul>\n            <p>Note: This only checks format, not validity via Luhn algorithm</p>\n        ",
+    "examples": {
+      "javascript": "const ccRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$/;\n\nconsole.log(ccRegex.test(\"4532015112830366\")); // true (Visa format)\nconsole.log(ccRegex.test(\"5425233430109903\")); // true (Mastercard format)\nconsole.log(ccRegex.test(\"1234567890123456\")); // false",
+      "python": "import re\n\ncc_regex = r\"^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$\"\n\nprint(bool(re.match(cc_regex, \"4532015112830366\")))  # True\nprint(bool(re.match(cc_regex, \"1234567890123456\")))  # False",
+      "java": "String ccRegex = \"^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$\";\nPattern pattern = Pattern.compile(ccRegex);\n\nSystem.out.println(pattern.matcher(\"4532015112830366\").matches()); // true",
+      "php": "<?php\n$ccRegex = \"/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$/\";\n\necho preg_match($ccRegex, \"4532015112830366\"); // 1\n?>",
+      "ruby": "cc_regex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$/\n\nputs \"4532015112830366\".match?(cc_regex)  # true"
+    }
+  },
+  "10": {
+    "title": "HTML Tag Extraction",
+    "pattern": "<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)",
+    "description": "\n            <p>Matches and extracts HTML tags.</p>\n            <ul>\n                <li><code>&lt;([a-z]+)</code> - Opening tag name (captured)</li>\n                <li><code>([^&lt;]+)*</code> - Attributes</li>\n                <li><code>(?:&gt;(.*)&lt;\\/\\\\1&gt;</code> - Content and closing tag (backreference)</li>\n                <li><code>|\\s+\\/&gt;)</code> - Or self-closing tag</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const htmlRegex = /<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/gi;\n\nconst html = \"<div>Hello</div>\";\nconst match = html.match(htmlRegex);\nconsole.log(match); // [\"<div>Hello</div>\"]\n\nconst selfClosing = \"<img src='test.jpg' />\";\nconsole.log(selfClosing.match(htmlRegex)); // [\"<img src='test.jpg' />\"]",
+      "python": "import re\n\nhtml_regex = r\"<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)\"\n\nhtml = \"<div>Hello</div>\"\nmatch = re.search(html_regex, html, re.IGNORECASE)\nprint(match.group(0))  # <div>Hello</div>",
+      "java": "String htmlRegex = \"<([a-z]+)([^<]+)*(?:>(.*)<\\\\/\\\\1>|\\\\s+\\\\/>)\";\nPattern pattern = Pattern.compile(htmlRegex, Pattern.CASE_INSENSITIVE);\n\nString html = \"<div>Hello</div>\";\nMatcher matcher = pattern.matcher(html);\nif (matcher.find()) {\n    System.out.println(matcher.group(0)); // <div>Hello</div>\n}",
+      "php": "<?php\n$htmlRegex = \"/<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/i\";\n\n$html = \"<div>Hello</div>\";\npreg_match($htmlRegex, $html, $matches);\nprint_r($matches[0]); // <div>Hello</div>\n?>",
+      "ruby": "html_regex = /<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/i\n\nhtml = \"<div>Hello</div>\"\nmatch = html.match(html_regex)\nputs match[0]  # <div>Hello</div>"
+    }
+  },
+  "11": {
+    "title": "Time Format (24-hour)",
+    "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$",
+    "description": "\n            <p>Validates 24-hour time format (HH:MM).</p>\n            <ul>\n                <li><code>([01]?[0-9]|2[0-3])</code> - Hours: 0-23</li>\n                <li><code>:</code> - Colon separator</li>\n                <li><code>[0-5][0-9]</code> - Minutes: 00-59</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;\n\nconsole.log(timeRegex.test(\"09:30\")); // true\nconsole.log(timeRegex.test(\"23:59\")); // true\nconsole.log(timeRegex.test(\"24:00\")); // false\nconsole.log(timeRegex.test(\"12:60\")); // false",
+      "python": "import re\n\ntime_regex = r\"^([01]?[0-9]|2[0-3]):[0-5][0-9]$\"\n\nprint(bool(re.match(time_regex, \"09:30\")))  # True\nprint(bool(re.match(time_regex, \"24:00\")))  # False",
+      "java": "String timeRegex = \"^([01]?[0-9]|2[0-3]):[0-5][0-9]$\";\nPattern pattern = Pattern.compile(timeRegex);\n\nSystem.out.println(pattern.matcher(\"09:30\").matches()); // true\nSystem.out.println(pattern.matcher(\"24:00\").matches()); // false",
+      "php": "<?php\n$timeRegex = \"/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/\";\n\necho preg_match($timeRegex, \"09:30\"); // 1\necho preg_match($timeRegex, \"24:00\"); // 0\n?>",
+      "ruby": "time_regex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/\n\nputs \"09:30\".match?(time_regex)  # true\nputs \"24:00\".match?(time_regex)  # false"
+    }
+  },
+  "12": {
+    "title": "Postal Code (US ZIP)",
+    "pattern": "^\\d{5}(-\\d{4})?$",
+    "description": "\n            <p>Matches US ZIP codes in both 5-digit and ZIP+4 formats.</p>\n            <ul>\n                <li><code>\\d{5}</code> - 5 digits</li>\n                <li><code>(-\\d{4})?</code> - Optional dash and 4 more digits</li>\n            </ul>\n            <p>Matches: 12345, 12345-6789</p>\n        ",
+    "examples": {
+      "javascript": "const zipRegex = /^\\d{5}(-\\d{4})?$/;\n\nconsole.log(zipRegex.test(\"12345\")); // true\nconsole.log(zipRegex.test(\"12345-6789\")); // true\nconsole.log(zipRegex.test(\"1234\")); // false",
+      "python": "import re\n\nzip_regex = r\"^\\d{5}(-\\d{4})?$\"\n\nprint(bool(re.match(zip_regex, \"12345\")))  # True\nprint(bool(re.match(zip_regex, \"12345-6789\")))  # True",
+      "java": "String zipRegex = \"^\\\\d{5}(-\\\\d{4})?$\";\nPattern pattern = Pattern.compile(zipRegex);\n\nSystem.out.println(pattern.matcher(\"12345\").matches()); // true\nSystem.out.println(pattern.matcher(\"12345-6789\").matches()); // true",
+      "php": "<?php\n$zipRegex = \"/^\\d{5}(-\\d{4})?$/\";\n\necho preg_match($zipRegex, \"12345\"); // 1\necho preg_match($zipRegex, \"12345-6789\"); // 1\n?>",
+      "ruby": "zip_regex = /^\\d{5}(-\\d{4})?$/\n\nputs \"12345\".match?(zip_regex)  # true\nputs \"12345-6789\".match?(zip_regex)  # true"
+    }
+  },
+  "13": {
+    "title": "Social Security Number",
+    "pattern": "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$",
+    "description": "\n            <p>Validates US Social Security Numbers with format and business rules.</p>\n            <ul>\n                <li><code>(?!000|666)</code> - First 3 digits cannot be 000 or 666</li>\n                <li><code>[0-8][0-9]{2}</code> - First 3 digits: 001-899</li>\n                <li><code>(?!00)[0-9]{2}</code> - Middle 2 digits cannot be 00</li>\n                <li><code>(?!0000)[0-9]{4}</code> - Last 4 digits cannot be 0000</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const ssnRegex = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;\n\nconsole.log(ssnRegex.test(\"123-45-6789\")); // true\nconsole.log(ssnRegex.test(\"000-45-6789\")); // false\nconsole.log(ssnRegex.test(\"123-00-6789\")); // false",
+      "python": "import re\n\nssn_regex = r\"^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$\"\n\nprint(bool(re.match(ssn_regex, \"123-45-6789\")))  # True\nprint(bool(re.match(ssn_regex, \"000-45-6789\")))  # False",
+      "java": "String ssnRegex = \"^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$\";\nPattern pattern = Pattern.compile(ssnRegex);\n\nSystem.out.println(pattern.matcher(\"123-45-6789\").matches()); // true",
+      "php": "<?php\n$ssnRegex = \"/^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/\";\n\necho preg_match($ssnRegex, \"123-45-6789\"); // 1\n?>",
+      "ruby": "ssn_regex = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/\n\nputs \"123-45-6789\".match?(ssn_regex)  # true"
+    }
+  },
+  "14": {
+    "title": "File Path (Windows & Unix)",
+    "pattern": "^(?:[a-zA-Z]:\\\\|\\/)(?:[^\\\\\\/:*?\"<>|\\r\\n]+[\\\\\/])*[^\\\\\\/:*?\"<>|\\r\\n]*$",
+    "description": "\n            <p>Matches both Windows and Unix file paths.</p>\n            <ul>\n                <li><code>(?:[a-zA-Z]:\\\\|\\/)</code> - Drive letter with backslash OR forward slash</li>\n                <li><code>[^\\\\\\/:*?\"&lt;&gt;|\\r\\n]+</code> - Valid filename characters</li>\n                <li>Excludes invalid Windows filename characters</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const pathRegex = /^(?:[a-zA-Z]:\\\\|\/)(?:[^\\\\\\/:*?\"<>|\\r\\n]+[\\\\\\/])*[^\\\\\\/:*?\"<>|\\r\\n]*$/;\n\nconsole.log(pathRegex.test(\"C:\\\\Users\\\\file.txt\")); // true\nconsole.log(pathRegex.test(\"/home/user/file.txt\")); // true\nconsole.log(pathRegex.test(\"invalid*file.txt\")); // false",
+      "python": "import re\n\npath_regex = r\"^(?:[a-zA-Z]:\\\\|/)(?:[^\\\\/:*?\\\"<>|\\r\\n]+[\\\\/])*[^\\\\/:*?\\\"<>|\\r\\n]*$\"\n\nprint(bool(re.match(path_regex, \"C:\\\\Users\\\\file.txt\")))  # True\nprint(bool(re.match(path_regex, \"/home/user/file.txt\")))  # True",
+      "java": "String pathRegex = \"^(?:[a-zA-Z]:\\\\\\\\|/)(?:[^\\\\\\\\/:*?\\\\\"<>|\\\\r\\\\n]+[\\\\\\\\/])*[^\\\\\\\\/:*?\\\\\"<>|\\\\r\\\\n]*$\";\nPattern pattern = Pattern.compile(pathRegex);\n\nSystem.out.println(pattern.matcher(\"C:\\\\Users\\\\file.txt\").matches()); // true",
+      "php": "<?php\n$pathRegex = \"/^(?:[a-zA-Z]:\\\\\\\\|\\/)(?:[^\\\\\\\\\\/:*?\\\"<>|\\r\\n]+[\\\\\\\\\\/])*[^\\\\\\\\\\/:*?\\\"<>|\\r\\n]*$/\";\n\necho preg_match($pathRegex, \"C:\\\\Users\\\\file.txt\"); // 1\n?>",
+      "ruby": "path_regex = /^(?:[a-zA-Z]:\\\\|\\/)(?:[^\\\\\\/:*?\"<>|\\r\\n]+[\\\\\\/])*[^\\\\\\/:*?\"<>|\\r\\n]*$/\n\nputs \"C:\\\\Users\\\\file.txt\".match?(path_regex)  # true"
+    }
+  },
+  "15": {
+    "title": "MAC Address",
+    "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
+    "description": "\n            <p>Validates MAC addresses in common formats.</p>\n            <ul>\n                <li><code>[0-9A-Fa-f]{2}</code> - Two hex digits</li>\n                <li><code>[:-]</code> - Separator (colon or hyphen)</li>\n                <li>Repeated 5 times, then final pair</li>\n            </ul>\n            <p>Matches: 00:1A:2B:3C:4D:5E, 00-1A-2B-3C-4D-5E</p>\n        ",
+    "examples": {
+      "javascript": "const macRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;\n\nconsole.log(macRegex.test(\"00:1A:2B:3C:4D:5E\")); // true\nconsole.log(macRegex.test(\"00-1A-2B-3C-4D-5E\")); // true\nconsole.log(macRegex.test(\"00:1A:2B:3C:4D\")); // false",
+      "python": "import re\n\nmac_regex = r\"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$\"\n\nprint(bool(re.match(mac_regex, \"00:1A:2B:3C:4D:5E\")))  # True\nprint(bool(re.match(mac_regex, \"00-1A-2B-3C-4D-5E\")))  # True",
+      "java": "String macRegex = \"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$\";\nPattern pattern = Pattern.compile(macRegex);\n\nSystem.out.println(pattern.matcher(\"00:1A:2B:3C:4D:5E\").matches()); // true",
+      "php": "<?php\n$macRegex = \"/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/\";\n\necho preg_match($macRegex, \"00:1A:2B:3C:4D:5E\"); // 1\n?>",
+      "ruby": "mac_regex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/\n\nputs \"00:1A:2B:3C:4D:5E\".match?(mac_regex)  # true"
+    }
+  },
+  "16": {
+    "title": "Markdown Link Extraction",
+    "pattern": "\\[([^\\]]+)\\]\\(([^\\)]+)\\)",
+    "description": "\n            <p>Extracts Markdown-style links.</p>\n            <ul>\n                <li><code>\\[([^\\]]+)\\]</code> - Link text in square brackets</li>\n                <li><code>\\(([^\\)]+)\\)</code> - URL in parentheses</li>\n                <li>Both parts are captured for extraction</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const mdLinkRegex = /\\[([^\\]]+)\\]\\(([^\\)]+)\\)/g;\n\nconst text = \"Check [Google](https://google.com) and [GitHub](https://github.com)\";\nconst matches = [...text.matchAll(mdLinkRegex)];\n\nmatches.forEach(match => {\n    console.log(`Text: ${match[1]}, URL: ${match[2]}`);\n});",
+      "python": "import re\n\nmd_link_regex = r\"\\[([^\\]]+)\\]\\(([^\\)]+)\\)\"\n\ntext = \"Check [Google](https://google.com) and [GitHub](https://github.com)\"\nmatches = re.findall(md_link_regex, text)\n\nfor text, url in matches:\n    print(f\"Text: {text}, URL: {url}\")",
+      "java": "String mdLinkRegex = \"\\\\[([^\\\\]]+)\\\\]\\\\(([^\\\\)]+)\\\\)\";\nPattern pattern = Pattern.compile(mdLinkRegex);\n\nString text = \"Check [Google](https://google.com)\";\nMatcher matcher = pattern.matcher(text);\n\nwhile (matcher.find()) {\n    System.out.println(\"Text: \" + matcher.group(1) + \", URL: \" + matcher.group(2));\n}",
+      "php": "<?php\n$mdLinkRegex = \"/\\[([^\\]]+)\\]\\(([^\\)]+)\\)/\";\n\n$text = \"Check [Google](https://google.com)\";\npreg_match_all($mdLinkRegex, $text, $matches);\n\nforeach ($matches[1] as $i => $linkText) {\n    echo \"Text: $linkText, URL: {$matches[2][$i]}\\n\";\n}\n?>",
+      "ruby": "md_link_regex = /\\[([^\\]]+)\\]\\(([^\\)]+)\\)/\n\ntext = \"Check [Google](https://google.com)\"\ntext.scan(md_link_regex) do |link_text, url|\n    puts \"Text: #{link_text}, URL: #{url}\"\nend"
+    }
+  },
+  "17": {
+    "title": "Whitespace Normalization",
+    "pattern": "\\s+",
+    "description": "\n            <p>Matches one or more whitespace characters (spaces, tabs, newlines).</p>\n            <ul>\n                <li><code>\\s</code> - Any whitespace character</li>\n                <li><code>+</code> - One or more occurrences</li>\n            </ul>\n            <p>Useful for: normalizing spaces, removing extra whitespace, splitting by whitespace</p>\n        ",
+    "examples": {
+      "javascript": "const whitespaceRegex = /\\s+/g;\n\nconst text = \"  Hello    world  \\n\\t  RegEx  \";\nconst normalized = text.trim().replace(whitespaceRegex, \" \");\nconsole.log(normalized); // \"Hello world RegEx\"\n\nconst words = text.trim().split(whitespaceRegex);\nconsole.log(words); // [\"Hello\", \"world\", \"RegEx\"]",
+      "python": "import re\n\nwhitespace_regex = r\"\\s+\"\n\ntext = \"  Hello    world  \\n\\t  RegEx  \"\nnormalized = re.sub(whitespace_regex, \" \", text.strip())\nprint(normalized)  # \"Hello world RegEx\"\n\nwords = re.split(whitespace_regex, text.strip())\nprint(words)  # [\"Hello\", \"world\", \"RegEx\"]",
+      "java": "String whitespaceRegex = \"\\\\s+\";\n\nString text = \"  Hello    world  \\n\\t  RegEx  \";\nString normalized = text.trim().replaceAll(whitespaceRegex, \" \");\nSystem.out.println(normalized); // \"Hello world RegEx\"\n\nString[] words = text.trim().split(whitespaceRegex);\nSystem.out.println(Arrays.toString(words)); // [Hello, world, RegEx]",
+      "php": "<?php\n$whitespaceRegex = \"/\\s+/\";\n\n$text = \"  Hello    world  \\n\\t  RegEx  \";\n$normalized = preg_replace($whitespaceRegex, \" \", trim($text));\necho $normalized; // \"Hello world RegEx\"\n\n$words = preg_split($whitespaceRegex, trim($text));\nprint_r($words); // Array([0] => Hello [1] => world [2] => RegEx)\n?>",
+      "ruby": "whitespace_regex = /\\s+/\n\ntext = \"  Hello    world  \\n\\t  RegEx  \"\nnormalized = text.strip.gsub(whitespace_regex, \" \")\nputs normalized  # \"Hello world RegEx\"\n\nwords = text.strip.split(whitespace_regex)\nputs words.inspect  # [\"Hello\", \"world\", \"RegEx\"]"
+    }
+  },
+  "18": {
+    "title": "Version Number (Semantic)",
+    "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+    "description": "\n            <p>Validates Semantic Versioning (SemVer) format.</p>\n            <ul>\n                <li><code>(0|[1-9]\\d*)</code> - Major, minor, patch (no leading zeros)</li>\n                <li><code>(?:-...)?</code> - Optional pre-release version</li>\n                <li><code>(?:\\+...)?</code> - Optional build metadata</li>\n            </ul>\n            <p>Matches: 1.0.0, 2.1.3-alpha, 1.0.0-beta.1+build.123</p>\n        ",
+    "examples": {
+      "javascript": "const semverRegex = /^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/;\n\nconsole.log(semverRegex.test(\"1.0.0\")); // true\nconsole.log(semverRegex.test(\"2.1.3-alpha\")); // true\nconsole.log(semverRegex.test(\"1.0.0-beta.1+build.123\")); // true",
+      "python": "import re\n\nsemver_regex = r\"^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$\"\n\nprint(bool(re.match(semver_regex, \"1.0.0\")))  # True\nprint(bool(re.match(semver_regex, \"2.1.3-alpha\")))  # True",
+      "java": "String semverRegex = \"^(0|[1-9]\\\\d*)\\\\.(0|[1-9]\\\\d*)\\\\.(0|[1-9]\\\\d*)(?:-((?:0|[1-9]\\\\d*|\\\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\\\.(?:0|[1-9]\\\\d*|\\\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\\\+([0-9a-zA-Z-]+(?:\\\\.[0-9a-zA-Z-]+)*))?$\";\nPattern pattern = Pattern.compile(semverRegex);\n\nSystem.out.println(pattern.matcher(\"1.0.0\").matches()); // true",
+      "php": "<?php\n$semverRegex = \"/^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/\";\n\necho preg_match($semverRegex, \"1.0.0\"); // 1\n?>",
+      "ruby": "semver_regex = /^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/\n\nputs \"1.0.0\".match?(semver_regex)  # true"
+    }
+  },
+  "19": {
+    "title": "Extracting Numbers",
+    "pattern": "-?\\d+\\.?\\d*",
+    "description": "\n            <p>Matches decimal numbers including negatives.</p>\n            <ul>\n                <li><code>-?</code> - Optional minus sign</li>\n                <li><code>\\d+</code> - One or more digits</li>\n                <li><code>\\.?</code> - Optional decimal point</li>\n                <li><code>\\d*</code> - Zero or more decimal digits</li>\n            </ul>\n            <p>Matches: 42, -17, 3.14, -0.5</p>\n        ",
+    "examples": {
+      "javascript": "const numberRegex = /-?\\d+\\.?\\d*/g;\n\nconst text = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\";\nconst numbers = text.match(numberRegex);\nconsole.log(numbers); // [\"-5.5\", \"29.99\", \"42\"]\n\nconst sum = numbers.reduce((acc, n) => acc + parseFloat(n), 0);\nconsole.log(sum); // 66.49",
+      "python": "import re\n\nnumber_regex = r\"-?\\d+\\.?\\d*\"\n\ntext = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\"\nnumbers = re.findall(number_regex, text)\nprint(numbers)  # ['-5.5', '29.99', '42']\n\ntotal = sum(float(n) for n in numbers)\nprint(total)  # 66.49",
+      "java": "String numberRegex = \"-?\\\\d+\\\\.?\\\\d*\";\nPattern pattern = Pattern.compile(numberRegex);\n\nString text = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\";\nMatcher matcher = pattern.matcher(text);\n\nList<String> numbers = new ArrayList<>();\nwhile (matcher.find()) {\n    numbers.add(matcher.group());\n}\nSystem.out.println(numbers); // [-5.5, 29.99, 42]",
+      "php": "<?php\n$numberRegex = \"/-?\\d+\\.?\\d*/\";\n\n$text = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\";\npreg_match_all($numberRegex, $text, $matches);\nprint_r($matches[0]); // Array([0] => -5.5 [1] => 29.99 [2] => 42)\n?>",
+      "ruby": "number_regex = /-?\\d+\\.?\\d*/\n\ntext = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\"\nnumbers = text.scan(number_regex)\nputs numbers.inspect  # [\"-5.5\", \"29.99\", \"42\"]"
+    }
+  },
+  "20": {
+    "title": "Camel Case to Snake Case",
+    "pattern": "([a-z0-9])([A-Z])",
+    "description": "\n            <p>Converts camelCase to snake_case.</p>\n            <ul>\n                <li><code>([a-z0-9])</code> - Lowercase letter or digit (captured)</li>\n                <li><code>([A-Z])</code> - Uppercase letter (captured)</li>\n                <li>Insert underscore between the two groups</li>\n            </ul>\n        ",
+    "examples": {
+      "javascript": "const camelRegex = /([a-z0-9])([A-Z])/g;\n\nfunction camelToSnake(str) {\n    return str.replace(camelRegex, \"$1_$2\").toLowerCase();\n}\n\nconsole.log(camelToSnake(\"myVariableName\")); // \"my_variable_name\"\nconsole.log(camelToSnake(\"userId\")); // \"user_id\"\nconsole.log(camelToSnake(\"HTTPResponse\")); // \"httpresponse\"",
+      "python": "import re\n\ncamel_regex = r\"([a-z0-9])([A-Z])\"\n\ndef camel_to_snake(text):\n    return re.sub(camel_regex, r\"\\1_\\2\", text).lower()\n\nprint(camel_to_snake(\"myVariableName\"))  # \"my_variable_name\"\nprint(camel_to_snake(\"userId\"))  # \"user_id\"",
+      "java": "String camelRegex = \"([a-z0-9])([A-Z])\";\n\npublic static String camelToSnake(String str) {\n    return str.replaceAll(camelRegex, \"$1_$2\").toLowerCase();\n}\n\nSystem.out.println(camelToSnake(\"myVariableName\")); // \"my_variable_name\"",
+      "php": "<?php\n$camelRegex = \"/([a-z0-9])([A-Z])/\";\n\nfunction camelToSnake($str) {\n    global $camelRegex;\n    return strtolower(preg_replace($camelRegex, \"$1_$2\", $str));\n}\n\necho camelToSnake(\"myVariableName\"); // \"my_variable_name\"\n?>",
+      "ruby": "camel_regex = /([a-z0-9])([A-Z])/\n\ndef camel_to_snake(str)\n    str.gsub(camel_regex, '\\1_\\2').downcase\nend\n\nputs camel_to_snake(\"myVariableName\")  # \"my_variable_name\""
+    }
+  },
+  "21": {
+    "title": "Remove HTML Tags",
+    "pattern": "<[^>]*>",
+    "description": "\n            <p>Removes all HTML tags from text.</p>\n            <ul>\n                <li><code>&lt;</code> - Opening angle bracket</li>\n                <li><code>[^&gt;]*</code> - Any characters except closing bracket</li>\n                <li><code>&gt;</code> - Closing angle bracket</li>\n            </ul>\n            <p>Note: This is a simple approach; for complex HTML, use a proper parser</p>\n        ",
+    "examples": {
+      "javascript": "const htmlTagRegex = /<[^>]*>/g;\n\nconst html = \"<p>Hello <strong>world</strong>!</p>\";\nconst plainText = html.replace(htmlTagRegex, \"\");\nconsole.log(plainText); // \"Hello world!\"\n\nconst complex = \"<div class='test'>Text <span>here</span></div>\";\nconsole.log(complex.replace(htmlTagRegex, \"\")); // \"Text here\"",
+      "python": "import re\n\nhtml_tag_regex = r\"<[^>]*>\"\n\nhtml = \"<p>Hello <strong>world</strong>!</p>\"\nplain_text = re.sub(html_tag_regex, \"\", html)\nprint(plain_text)  # \"Hello world!\"",
+      "java": "String htmlTagRegex = \"<[^>]*>\";\n\nString html = \"<p>Hello <strong>world</strong>!</p>\";\nString plainText = html.replaceAll(htmlTagRegex, \"\");\nSystem.out.println(plainText); // \"Hello world!\"",
+      "php": "<?php\n$htmlTagRegex = \"/<[^>]*>/\";\n\n$html = \"<p>Hello <strong>world</strong>!</p>\";\n$plainText = preg_replace($htmlTagRegex, \"\", $html);\necho $plainText; // \"Hello world!\"\n?>",
+      "ruby": "html_tag_regex = /<[^>]*>/\n\nhtml = \"<p>Hello <strong>world</strong>!</p>\"\nplain_text = html.gsub(html_tag_regex, \"\")\nputs plain_text  # \"Hello world!\""
+    }
+  },
+  "22": {
+    "title": "Duplicate Word Detection",
+    "pattern": "\\b(\\w+)\\s+\\1\\b",
+    "description": "\n            <p>Finds duplicate consecutive words.</p>\n            <ul>\n                <li><code>\\b</code> - Word boundary</li>\n                <li><code>(\\w+)</code> - Capture a word</li>\n                <li><code>\\s+</code> - One or more spaces</li>\n                <li><code>\\\\1</code> - Backreference to first captured group</li>\n            </ul>\n            <p>Finds: \"the the\", \"is is\", etc.</p>\n        ",
+    "examples": {
+      "javascript": "const duplicateRegex = /\\b(\\w+)\\s+\\1\\b/gi;\n\nconst text = \"This is is a test test of the the duplicate finder.\";\nconst duplicates = text.match(duplicateRegex);\nconsole.log(duplicates); // [\"is is\", \"test test\", \"the the\"]\n\nconst fixed = text.replace(duplicateRegex, \"$1\");\nconsole.log(fixed); // \"This is a test of the duplicate finder.\"",
+      "python": "import re\n\nduplicate_regex = r\"\\b(\\w+)\\s+\\1\\b\"\n\ntext = \"This is is a test test of the the duplicate finder.\"\nduplicates = re.findall(duplicate_regex, text, re.IGNORECASE)\nprint(duplicates)  # ['is', 'test', 'the']\n\nfixed = re.sub(duplicate_regex, r\"\\1\", text, flags=re.IGNORECASE)\nprint(fixed)  # \"This is a test of the duplicate finder.\"",
+      "java": "String duplicateRegex = \"\\\\b(\\\\w+)\\\\s+\\\\1\\\\b\";\nPattern pattern = Pattern.compile(duplicateRegex, Pattern.CASE_INSENSITIVE);\n\nString text = \"This is is a test test of the the duplicate finder.\";\nMatcher matcher = pattern.matcher(text);\n\nString fixed = matcher.replaceAll(\"$1\");\nSystem.out.println(fixed); // \"This is a test of the duplicate finder.\"",
+      "php": "<?php\n$duplicateRegex = \"/\\b(\\w+)\\s+\\1\\b/i\";\n\n$text = \"This is is a test test of the the duplicate finder.\";\npreg_match_all($duplicateRegex, $text, $matches);\nprint_r($matches[0]); // Array([0] => is is [1] => test test [2] => the the)\n\n$fixed = preg_replace($duplicateRegex, \"$1\", $text);\necho $fixed; // \"This is a test of the duplicate finder.\"\n?>",
+      "ruby": "duplicate_regex = /\\b(\\w+)\\s+\\1\\b/i\n\ntext = \"This is is a test test of the the duplicate finder.\"\nduplicates = text.scan(duplicate_regex).flatten\nputs duplicates.inspect  # [\"is\", \"test\", \"the\"]\n\nfixed = text.gsub(duplicate_regex, '\\1')\nputs fixed  # \"This is a test of the duplicate finder.\""
+    }
+  },
+  "23": {
+    "title": "Currency Format",
+    "pattern": "^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$",
+    "description": "\n            <p>Validates currency amounts with optional dollar sign and commas.</p>\n            <ul>\n                <li><code>\\$?</code> - Optional dollar sign</li>\n                <li><code>([0-9]{1,3},)*</code> - Thousands separated by commas</li>\n                <li><code>(\\.[0-9]{2})?</code> - Optional cents (2 digits)</li>\n            </ul>\n            <p>Matches: $1,234.56, 1234, $1,000,000.00</p>\n        ",
+    "examples": {
+      "javascript": "const currencyRegex = /^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$/;\n\nconsole.log(currencyRegex.test(\"$1,234.56\")); // true\nconsole.log(currencyRegex.test(\"1234\")); // true\nconsole.log(currencyRegex.test(\"$1,000,000.00\")); // true\nconsole.log(currencyRegex.test(\"$1,23.45\")); // false",
+      "python": "import re\n\ncurrency_regex = r\"^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$\"\n\nprint(bool(re.match(currency_regex, \"$1,234.56\")))  # True\nprint(bool(re.match(currency_regex, \"1234\")))  # True\nprint(bool(re.match(currency_regex, \"$1,23.45\")))  # False",
+      "java": "String currencyRegex = \"^\\\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\\\.[0-9]{2})?$\";\nPattern pattern = Pattern.compile(currencyRegex);\n\nSystem.out.println(pattern.matcher(\"$1,234.56\").matches()); // true\nSystem.out.println(pattern.matcher(\"$1,23.45\").matches()); // false",
+      "php": "<?php\n$currencyRegex = \"/^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$/\";\n\necho preg_match($currencyRegex, \"$1,234.56\"); // 1\necho preg_match($currencyRegex, \"$1,23.45\"); // 0\n?>",
+      "ruby": "currency_regex = /^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$/\n\nputs \"$1,234.56\".match?(currency_regex)  # true\nputs \"$1,23.45\".match?(currency_regex)  # false"
+    }
+  },
+  "24": {
+    "title": "Lookahead & Lookbehind",
+    "pattern": "(?<=@)\\w+(?=\\.com)",
+    "description": "\n            <p>Advanced: Positive lookbehind and lookahead.</p>\n            <ul>\n                <li><code>(?&lt;=@)</code> - Positive lookbehind: preceded by @</li>\n                <li><code>\\w+</code> - One or more word characters (the match)</li>\n                <li><code>(?=\\.com)</code> - Positive lookahead: followed by .com</li>\n            </ul>\n            <p>From \"user@example.com\", extracts only \"example\"</p>\n            <p><strong>Merry Christmas! 🎄</strong> You've completed all 24 days!</p>\n        ",
+    "examples": {
+      "javascript": "const lookaroundRegex = /(?<=@)\\w+(?=\\.com)/g;\n\nconst email = \"Contact: user@example.com or admin@test.com\";\nconst domains = email.match(lookaroundRegex);\nconsole.log(domains); // [\"example\", \"test\"]\n\n// Without lookarounds, you'd capture @ and .com too\nconst simpleRegex = /@(\\w+)\\.com/g;\nconst matches = [...email.matchAll(simpleRegex)];\nconsole.log(matches[0][1]); // \"example\"",
+      "python": "import re\n\nlookaround_regex = r\"(?<=@)\\w+(?=\\.com)\"\n\nemail = \"Contact: user@example.com or admin@test.com\"\ndomains = re.findall(lookaround_regex, email)\nprint(domains)  # ['example', 'test']\n\n# Lookarounds don't consume characters\n# So the match is just the domain name",
+      "java": "String lookaroundRegex = \"(?<=@)\\\\w+(?=\\\\.com)\";\nPattern pattern = Pattern.compile(lookaroundRegex);\n\nString email = \"Contact: user@example.com or admin@test.com\";\nMatcher matcher = pattern.matcher(email);\n\nList<String> domains = new ArrayList<>();\nwhile (matcher.find()) {\n    domains.add(matcher.group());\n}\nSystem.out.println(domains); // [example, test]",
+      "php": "<?php\n$lookaroundRegex = \"/(?<=@)\\w+(?=\\.com)/\";\n\n$email = \"Contact: user@example.com or admin@test.com\";\npreg_match_all($lookaroundRegex, $email, $matches);\nprint_r($matches[0]); // Array([0] => example [1] => test)\n\n// Lookarounds are zero-width assertions\n// They don't include @ or .com in the match\n?>",
+      "ruby": "lookaround_regex = /(?<=@)\\w+(?=\\.com)/\n\nemail = \"Contact: user@example.com or admin@test.com\"\ndomains = email.scan(lookaround_regex)\nputs domains.inspect  # [\"example\", \"test\"]\n\n# The beauty of lookarounds: they assert without consuming"
+    }
+  }
+}

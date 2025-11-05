@@ -43,8 +43,29 @@ An interactive advent calendar that teaches regular expressions! Open a new door
 ### Running Locally
 
 1. Clone this repository
-2. Open `index.html` in your web browser
-3. Start exploring regex patterns!
+2. Serve the files with a local web server (required for JSON loading)
+3. Open in your web browser
+
+**Option 1: Using Python**
+```bash
+# Python 3
+python -m http.server 8000
+
+# Python 2
+python -m SimpleHTTPServer 8000
+```
+
+**Option 2: Using Node.js**
+```bash
+npx serve
+```
+
+**Option 3: Using VS Code**
+Install the "Live Server" extension and click "Go Live"
+
+Then open `http://localhost:8000` (or the port shown) in your browser.
+
+**Note:** Opening `index.html` directly with `file://` won't work due to CORS restrictions when loading the JSON file. You need a web server.
 
 No build process or dependencies required - it's pure HTML, CSS, and JavaScript.
 
@@ -76,9 +97,12 @@ function isDoorUnlocked(day) {
 regexp-advent-calendar/
 ├── index.html          # Main HTML structure
 ├── styles.css          # Styling and animations
-├── script.js           # Logic and regex content
+├── script.js           # Application logic
+├── regex-data.json     # Regex patterns and examples data
 └── README.md           # This file
 ```
+
+The regex content is stored separately in `regex-data.json` for easy maintenance and extensibility.
 
 ## Technologies Used
 
@@ -112,23 +136,30 @@ Perfect for:
 
 ## Customization
 
-Want to add your own regex patterns? Edit the `regexContent` object in `script.js`:
+Want to add your own regex patterns? Edit the `regex-data.json` file:
 
-```javascript
-const regexContent = {
-    1: {
-        title: "Your Pattern Name",
-        pattern: "your-regex-pattern-here",
-        description: `<p>HTML description</p>`,
-        examples: {
-            javascript: "// Your JS example",
-            python: "# Your Python example",
-            // ... other languages
-        }
-    },
-    // ... more days
-};
+```json
+{
+  "1": {
+    "title": "Your Pattern Name",
+    "pattern": "your-regex-pattern-here",
+    "description": "<p>HTML description</p>",
+    "examples": {
+      "javascript": "// Your JS example",
+      "python": "# Your Python example",
+      "java": "// Your Java example",
+      "php": "<?php // Your PHP example ?>",
+      "ruby": "# Your Ruby example"
+    }
+  }
+}
 ```
+
+**Tips for adding patterns:**
+- Remember to escape backslashes in JSON (use `\\` for a single backslash)
+- Keep descriptions clear and break down each regex component
+- Include working code examples for all 5 languages
+- Test your patterns before adding them!
 
 ## Contributing
 
