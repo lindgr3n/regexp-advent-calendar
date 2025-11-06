@@ -14,7 +14,7 @@ An interactive advent calendar that teaches regular expressions! Open a new door
 ## Regex Patterns Included
 
 1. **Email Validation** - Validate email addresses
-2. **Phone Numbers** - US phone number formats
+2. **Phone Numbers** - Swedish mobile phone formats
 3. **URL Validation** - HTTP/HTTPS URLs
 4. **Date Format** - ISO 8601 dates (YYYY-MM-DD)
 5. **Hex Colors** - Hexadecimal color codes
@@ -24,8 +24,8 @@ An interactive advent calendar that teaches regular expressions! Open a new door
 9. **Credit Card Numbers** - Major card formats
 10. **HTML Tags** - Extract HTML elements
 11. **Time Format** - 24-hour time
-12. **ZIP Codes** - US postal codes
-13. **Social Security Numbers** - SSN format with validation
+12. **Postal Codes** - Swedish postnummer format
+13. **Personal Identity Numbers** - Swedish personnummer format
 14. **File Paths** - Windows and Unix paths
 15. **MAC Addresses** - Network hardware addresses
 16. **Markdown Links** - Extract markdown link syntax

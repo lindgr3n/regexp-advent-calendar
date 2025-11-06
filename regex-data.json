@@ -12,15 +12,15 @@
     }
   },
   "2": {
-    "title": "Phone Number (US Format)",
-    "pattern": "^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$",
-    "description": "\n            <p>Matches US phone numbers in various formats.</p>\n            <ul>\n                <li><code>\\(?\\d{3}\\)?</code> - Area code with optional parentheses</li>\n                <li><code>[\\s.-]?</code> - Optional separator (space, dot, or dash)</li>\n                <li><code>\\d{3}</code> - First 3 digits</li>\n                <li><code>\\d{4}</code> - Last 4 digits</li>\n            </ul>\n            <p>Matches: (123) 456-7890, 123-456-7890, 123.456.7890, 1234567890</p>\n        ",
+    "title": "Phone Number (Swedish Format)",
+    "pattern": "^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$",
+    "description": "\n            <p>Matches Swedish mobile phone numbers in various formats.</p>\n            <ul>\n                <li><code>(\\+46|0)</code> - Country code +46 or leading 0</li>\n                <li><code>7[0-9]</code> - Mobile prefix (70-79)</li>\n                <li><code>(\\s?|-?)</code> - Optional separator (space or dash)</li>\n                <li><code>[0-9]{3}</code> - Next 3 digits</li>\n                <li><code>[0-9]{2}</code> - Two groups of 2 digits</li>\n            </ul>\n            <p>Matches: 070-123 45 67, +46 70 123 45 67, 0701234567</p>\n        ",
     "examples": {
-      "javascript": "const phoneRegex = /^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$/;\n\nconsole.log(phoneRegex.test(\"(123) 456-7890\")); // true\nconsole.log(phoneRegex.test(\"123-456-7890\")); // true\nconsole.log(phoneRegex.test(\"1234567890\")); // true",
-      "python": "import re\n\nphone_regex = r\"^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$\"\n\nprint(bool(re.match(phone_regex, \"(123) 456-7890\")))  # True\nprint(bool(re.match(phone_regex, \"123-456-7890\")))  # True",
-      "java": "String phoneRegex = \"^\\\\(?\\\\d{3}\\\\)?[\\\\s.-]?\\\\d{3}[\\\\s.-]?\\\\d{4}$\";\nPattern pattern = Pattern.compile(phoneRegex);\n\nSystem.out.println(pattern.matcher(\"(123) 456-7890\").matches()); // true\nSystem.out.println(pattern.matcher(\"123-456-7890\").matches()); // true",
-      "php": "<?php\n$phoneRegex = \"/^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$/\";\n\necho preg_match($phoneRegex, \"(123) 456-7890\"); // 1\necho preg_match($phoneRegex, \"123-456-7890\"); // 1\n?>",
-      "ruby": "phone_regex = /^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$/\n\nputs \"(123) 456-7890\".match?(phone_regex)  # true\nputs \"123-456-7890\".match?(phone_regex)  # true"
+      "javascript": "const phoneRegex = /^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$/;\n\nconsole.log(phoneRegex.test(\"070-123 45 67\")); // true\nconsole.log(phoneRegex.test(\"+46 70 123 45 67\")); // true\nconsole.log(phoneRegex.test(\"0701234567\")); // true\nconsole.log(phoneRegex.test(\"060-123 45 67\")); // false (not mobile)",
+      "python": "import re\n\nphone_regex = r\"^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$\"\n\nprint(bool(re.match(phone_regex, \"070-123 45 67\")))  # True\nprint(bool(re.match(phone_regex, \"+46 70 123 45 67\")))  # True\nprint(bool(re.match(phone_regex, \"0701234567\")))  # True",
+      "java": "String phoneRegex = \"^(\\\\+46|0)(\\\\s?|-?)7[0-9](\\\\s?|-?)[0-9]{3}(\\\\s?|-?)[0-9]{2}(\\\\s?|-?)[0-9]{2}$\";\nPattern pattern = Pattern.compile(phoneRegex);\n\nSystem.out.println(pattern.matcher(\"070-123 45 67\").matches()); // true\nSystem.out.println(pattern.matcher(\"+46 70 123 45 67\").matches()); // true",
+      "php": "<?php\n$phoneRegex = \"/^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$/\";\n\necho preg_match($phoneRegex, \"070-123 45 67\"); // 1\necho preg_match($phoneRegex, \"+46 70 123 45 67\"); // 1\n?>",
+      "ruby": "phone_regex = /^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$/\n\nputs \"070-123 45 67\".match?(phone_regex)  # true\nputs \"+46 70 123 45 67\".match?(phone_regex)  # true"
     }
   },
   "3": {
@@ -132,27 +132,27 @@
     }
   },
   "12": {
-    "title": "Postal Code (US ZIP)",
-    "pattern": "^\\d{5}(-\\d{4})?$",
-    "description": "\n            <p>Matches US ZIP codes in both 5-digit and ZIP+4 formats.</p>\n            <ul>\n                <li><code>\\d{5}</code> - 5 digits</li>\n                <li><code>(-\\d{4})?</code> - Optional dash and 4 more digits</li>\n            </ul>\n            <p>Matches: 12345, 12345-6789</p>\n        ",
+    "title": "Postal Code (Swedish Postnummer)",
+    "pattern": "^\\d{3}\\s?\\d{2}$",
+    "description": "\n            <p>Matches Swedish postal codes (postnummer).</p>\n            <ul>\n                <li><code>\\d{3}</code> - First 3 digits</li>\n                <li><code>\\s?</code> - Optional space</li>\n                <li><code>\\d{2}</code> - Last 2 digits</li>\n            </ul>\n            <p>Matches: 123 45, 12345, 100 00</p>\n        ",
     "examples": {
-      "javascript": "const zipRegex = /^\\d{5}(-\\d{4})?$/;\n\nconsole.log(zipRegex.test(\"12345\")); // true\nconsole.log(zipRegex.test(\"12345-6789\")); // true\nconsole.log(zipRegex.test(\"1234\")); // false",
-      "python": "import re\n\nzip_regex = r\"^\\d{5}(-\\d{4})?$\"\n\nprint(bool(re.match(zip_regex, \"12345\")))  # True\nprint(bool(re.match(zip_regex, \"12345-6789\")))  # True",
-      "java": "String zipRegex = \"^\\\\d{5}(-\\\\d{4})?$\";\nPattern pattern = Pattern.compile(zipRegex);\n\nSystem.out.println(pattern.matcher(\"12345\").matches()); // true\nSystem.out.println(pattern.matcher(\"12345-6789\").matches()); // true",
-      "php": "<?php\n$zipRegex = \"/^\\d{5}(-\\d{4})?$/\";\n\necho preg_match($zipRegex, \"12345\"); // 1\necho preg_match($zipRegex, \"12345-6789\"); // 1\n?>",
-      "ruby": "zip_regex = /^\\d{5}(-\\d{4})?$/\n\nputs \"12345\".match?(zip_regex)  # true\nputs \"12345-6789\".match?(zip_regex)  # true"
+      "javascript": "const postnummerRegex = /^\\d{3}\\s?\\d{2}$/;\n\nconsole.log(postnummerRegex.test(\"123 45\")); // true\nconsole.log(postnummerRegex.test(\"12345\")); // true\nconsole.log(postnummerRegex.test(\"100 00\")); // true\nconsole.log(postnummerRegex.test(\"1234\")); // false",
+      "python": "import re\n\npostnummer_regex = r\"^\\d{3}\\s?\\d{2}$\"\n\nprint(bool(re.match(postnummer_regex, \"123 45\")))  # True\nprint(bool(re.match(postnummer_regex, \"12345\")))  # True\nprint(bool(re.match(postnummer_regex, \"100 00\")))  # True",
+      "java": "String postnummerRegex = \"^\\\\d{3}\\\\s?\\\\d{2}$\";\nPattern pattern = Pattern.compile(postnummerRegex);\n\nSystem.out.println(pattern.matcher(\"123 45\").matches()); // true\nSystem.out.println(pattern.matcher(\"12345\").matches()); // true",
+      "php": "<?php\n$postnummerRegex = \"/^\\d{3}\\s?\\d{2}$/\";\n\necho preg_match($postnummerRegex, \"123 45\"); // 1\necho preg_match($postnummerRegex, \"12345\"); // 1\n?>",
+      "ruby": "postnummer_regex = /^\\d{3}\\s?\\d{2}$/\n\nputs \"123 45\".match?(postnummer_regex)  # true\nputs \"12345\".match?(postnummer_regex)  # true"
     }
   },
   "13": {
-    "title": "Social Security Number",
-    "pattern": "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$",
-    "description": "\n            <p>Validates US Social Security Numbers with format and business rules.</p>\n            <ul>\n                <li><code>(?!000|666)</code> - First 3 digits cannot be 000 or 666</li>\n                <li><code>[0-8][0-9]{2}</code> - First 3 digits: 001-899</li>\n                <li><code>(?!00)[0-9]{2}</code> - Middle 2 digits cannot be 00</li>\n                <li><code>(?!0000)[0-9]{4}</code> - Last 4 digits cannot be 0000</li>\n            </ul>\n        ",
+    "title": "Swedish Personal Identity Number (Personnummer)",
+    "pattern": "^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$",
+    "description": "\n            <p>Validates Swedish personal identity numbers (personnummer).</p>\n            <ul>\n                <li><code>(19|20)?</code> - Optional century (19 or 20)</li>\n                <li><code>\\d{2}</code> - Year (2 digits)</li>\n                <li><code>(0[1-9]|1[0-2])</code> - Month (01-12)</li>\n                <li><code>(0[1-9]|[12]\\d|3[01])</code> - Day (01-31)</li>\n                <li><code>[-+]?</code> - Optional separator (- or +, where + indicates age 100+)</li>\n                <li><code>\\d{4}</code> - Birth number (3 digits) + check digit (1 digit)</li>\n            </ul>\n            <p>Matches: 19900101-1234, 900101-1234, 9001011234, 191001011234</p>\n        ",
     "examples": {
-      "javascript": "const ssnRegex = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;\n\nconsole.log(ssnRegex.test(\"123-45-6789\")); // true\nconsole.log(ssnRegex.test(\"000-45-6789\")); // false\nconsole.log(ssnRegex.test(\"123-00-6789\")); // false",
-      "python": "import re\n\nssn_regex = r\"^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$\"\n\nprint(bool(re.match(ssn_regex, \"123-45-6789\")))  # True\nprint(bool(re.match(ssn_regex, \"000-45-6789\")))  # False",
-      "java": "String ssnRegex = \"^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$\";\nPattern pattern = Pattern.compile(ssnRegex);\n\nSystem.out.println(pattern.matcher(\"123-45-6789\").matches()); // true",
-      "php": "<?php\n$ssnRegex = \"/^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/\";\n\necho preg_match($ssnRegex, \"123-45-6789\"); // 1\n?>",
-      "ruby": "ssn_regex = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/\n\nputs \"123-45-6789\".match?(ssn_regex)  # true"
+      "javascript": "const personnummerRegex = /^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$/;\n\nconsole.log(personnummerRegex.test(\"19900101-1234\")); // true\nconsole.log(personnummerRegex.test(\"900101-1234\")); // true\nconsole.log(personnummerRegex.test(\"9001011234\")); // true\nconsole.log(personnummerRegex.test(\"20101301-1234\")); // false (invalid month)",
+      "python": "import re\n\npersonnummer_regex = r\"^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$\"\n\nprint(bool(re.match(personnummer_regex, \"19900101-1234\")))  # True\nprint(bool(re.match(personnummer_regex, \"900101-1234\")))  # True\nprint(bool(re.match(personnummer_regex, \"20101301-1234\")))  # False",
+      "java": "String personnummerRegex = \"^(19|20)?\\\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\\\d|3[01])[-+]?\\\\d{4}$\";\nPattern pattern = Pattern.compile(personnummerRegex);\n\nSystem.out.println(pattern.matcher(\"19900101-1234\").matches()); // true\nSystem.out.println(pattern.matcher(\"900101-1234\").matches()); // true",
+      "php": "<?php\n$personnummerRegex = \"/^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$/\";\n\necho preg_match($personnummerRegex, \"19900101-1234\"); // 1\necho preg_match($personnummerRegex, \"900101-1234\"); // 1\n?>",
+      "ruby": "personnummer_regex = /^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$/\n\nputs \"19900101-1234\".match?(personnummer_regex)  # true\nputs \"900101-1234\".match?(personnummer_regex)  # true"
     }
   },
   "14": {
