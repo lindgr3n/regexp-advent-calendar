@@ -173,20 +173,23 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 
 **Setup Instructions:**
 
-1. **Enable GitHub Pages in your repository:**
-   - Go to your repository on GitHub
-   - Navigate to **Settings** → **Pages**
-   - Under "Source", select **GitHub Actions**
+1. **Merge to main branch:**
+   - Create a pull request from your feature branch to `main`
+   - Merge the pull request
 
-2. **Push to main branch:**
-   - Merge your changes to the `main` branch
-   - The GitHub Actions workflow will automatically deploy
+2. **Automatic deployment:**
+   - The GitHub Actions workflow will automatically run
+   - GitHub Pages will be enabled automatically (if not already enabled)
+   - Deployment typically takes 1-2 minutes
 
 3. **Access your site:**
    - Your site will be available at: `https://[your-username].github.io/[repository-name]/`
-   - Deployment typically takes 1-2 minutes
+   - Check the **Actions** tab to see deployment progress
 
-The workflow (`.github/workflows/deploy.yml`) automatically deploys on every push to `main` or can be triggered manually from the Actions tab.
+**Manual deployment:**
+- Go to **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**
+
+The workflow (`.github/workflows/deploy.yml`) automatically deploys on every push to `main`.
 
 ## Contributing
 
