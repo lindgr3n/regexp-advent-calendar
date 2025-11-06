@@ -40,6 +40,10 @@ An interactive advent calendar that teaches regular expressions! Open a new door
 
 ## Getting Started
 
+### Live Demo
+
+The calendar is automatically deployed to GitHub Pages: `https://[your-username].github.io/regexp-advent-calendar/`
+
 ### Running Locally
 
 1. Clone this repository
@@ -160,6 +164,29 @@ Want to add your own regex patterns? Edit the `regex-data.json` file:
 - Keep descriptions clear and break down each regex component
 - Include working code examples for all 5 languages
 - Test your patterns before adding them!
+
+## Deployment
+
+### GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+**Setup Instructions:**
+
+1. **Enable GitHub Pages in your repository:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under "Source", select **GitHub Actions**
+
+2. **Push to main branch:**
+   - Merge your changes to the `main` branch
+   - The GitHub Actions workflow will automatically deploy
+
+3. **Access your site:**
+   - Your site will be available at: `https://[your-username].github.io/[repository-name]/`
+   - Deployment typically takes 1-2 minutes
+
+The workflow (`.github/workflows/deploy.yml`) automatically deploys on every push to `main` or can be triggered manually from the Actions tab.
 
 ## Contributing
 
