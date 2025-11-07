@@ -8,7 +8,8 @@
       "python": "import re\n\nemail_regex = r\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\"\n\nemail = \"user@example.com\"\nprint(bool(re.match(email_regex, email)))  # True\n\ninvalid_email = \"invalid@email\"\nprint(bool(re.match(email_regex, invalid_email)))  # False",
       "java": "import java.util.regex.*;\n\nString emailRegex = \"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$\";\nPattern pattern = Pattern.compile(emailRegex);\n\nString email = \"user@example.com\";\nMatcher matcher = pattern.matcher(email);\nSystem.out.println(matcher.matches()); // true",
       "php": "<?php\n$emailRegex = \"/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/\";\n\n$email = \"user@example.com\";\necho preg_match($emailRegex, $email); // 1 (true)\n\n$invalidEmail = \"invalid@email\";\necho preg_match($emailRegex, $invalidEmail); // 0 (false)\n?>",
-      "ruby": "email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/\n\nemail = \"user@example.com\"\nputs email.match?(email_regex)  # true\n\ninvalid_email = \"invalid@email\"\nputs invalid_email.match?(email_regex)  # false"
+      "ruby": "email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/\n\nemail = \"user@example.com\"\nputs email.match?(email_regex)  # true\n\ninvalid_email = \"invalid@email\"\nputs invalid_email.match?(email_regex)  # false",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring emailPattern = @\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\";\nRegex emailRegex = new Regex(emailPattern);\n\nstring email = \"user@example.com\";\nConsole.WriteLine(emailRegex.IsMatch(email)); // True\n\nstring invalidEmail = \"invalid@email\";\nConsole.WriteLine(emailRegex.IsMatch(invalidEmail)); // False"
     }
   },
   "2": {
@@ -20,7 +21,8 @@
       "python": "import re\n\nphone_regex = r\"^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$\"\n\nprint(bool(re.match(phone_regex, \"070-123 45 67\")))  # True\nprint(bool(re.match(phone_regex, \"+46 70 123 45 67\")))  # True\nprint(bool(re.match(phone_regex, \"0701234567\")))  # True",
       "java": "String phoneRegex = \"^(\\\\+46|0)(\\\\s?|-?)7[0-9](\\\\s?|-?)[0-9]{3}(\\\\s?|-?)[0-9]{2}(\\\\s?|-?)[0-9]{2}$\";\nPattern pattern = Pattern.compile(phoneRegex);\n\nSystem.out.println(pattern.matcher(\"070-123 45 67\").matches()); // true\nSystem.out.println(pattern.matcher(\"+46 70 123 45 67\").matches()); // true",
       "php": "<?php\n$phoneRegex = \"/^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$/\";\n\necho preg_match($phoneRegex, \"070-123 45 67\"); // 1\necho preg_match($phoneRegex, \"+46 70 123 45 67\"); // 1\n?>",
-      "ruby": "phone_regex = /^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$/\n\nputs \"070-123 45 67\".match?(phone_regex)  # true\nputs \"+46 70 123 45 67\".match?(phone_regex)  # true"
+      "ruby": "phone_regex = /^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$/\n\nputs \"070-123 45 67\".match?(phone_regex)  # true\nputs \"+46 70 123 45 67\".match?(phone_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring phonePattern = @\"^(\\+46|0)(\\s?|-?)7[0-9](\\s?|-?)[0-9]{3}(\\s?|-?)[0-9]{2}(\\s?|-?)[0-9]{2}$\";\nRegex phoneRegex = new Regex(phonePattern);\n\nConsole.WriteLine(phoneRegex.IsMatch(\"070-123 45 67\")); // True\nConsole.WriteLine(phoneRegex.IsMatch(\"+46 70 123 45 67\")); // True\nConsole.WriteLine(phoneRegex.IsMatch(\"0701234567\")); // True"
     }
   },
   "3": {
@@ -32,7 +34,8 @@
       "python": "import re\n\nurl_regex = r\"^(https?://)([\\w\\d-]+\\.)+[\\w\\d-]+(/[^\\s]*)?$\"\n\nprint(bool(re.match(url_regex, \"https://example.com\")))  # True\nprint(bool(re.match(url_regex, \"ftp://example.com\")))  # False",
       "java": "String urlRegex = \"^(https?://)([\\\\w\\\\d-]+\\\\.)+[\\\\w\\\\d-]+(/[^\\\\s]*)?$\";\nPattern pattern = Pattern.compile(urlRegex);\n\nSystem.out.println(pattern.matcher(\"https://example.com\").matches()); // true",
       "php": "<?php\n$urlRegex = \"/^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$/\";\n\necho preg_match($urlRegex, \"https://example.com\"); // 1\n?>",
-      "ruby": "url_regex = /^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$/\n\nputs \"https://example.com\".match?(url_regex)  # true"
+      "ruby": "url_regex = /^(https?:\\/\\/)([\\w\\d-]+\\.)+[\\w\\d-]+(\\/[^\\s]*)?$/\n\nputs \"https://example.com\".match?(url_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring urlPattern = @\"^(https?://)([\\w\\d-]+\\.)+[\\w\\d-]+(/[^\\s]*)?$\";\nRegex urlRegex = new Regex(urlPattern);\n\nConsole.WriteLine(urlRegex.IsMatch(\"https://example.com\")); // True\nConsole.WriteLine(urlRegex.IsMatch(\"http://subdomain.example.com/path\")); // True\nConsole.WriteLine(urlRegex.IsMatch(\"ftp://example.com\")); // False"
     }
   },
   "4": {
@@ -44,7 +47,8 @@
       "python": "import re\n\ndate_regex = r\"^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$\"\n\nprint(bool(re.match(date_regex, \"2024-12-25\")))  # True\nprint(bool(re.match(date_regex, \"2024-13-01\")))  # False",
       "java": "String dateRegex = \"^\\\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01])$\";\nPattern pattern = Pattern.compile(dateRegex);\n\nSystem.out.println(pattern.matcher(\"2024-12-25\").matches()); // true",
       "php": "<?php\n$dateRegex = \"/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$/\";\n\necho preg_match($dateRegex, \"2024-12-25\"); // 1\n?>",
-      "ruby": "date_regex = /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$/\n\nputs \"2024-12-25\".match?(date_regex)  # true"
+      "ruby": "date_regex = /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$/\n\nputs \"2024-12-25\".match?(date_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring datePattern = @\"^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$\";\nRegex dateRegex = new Regex(datePattern);\n\nConsole.WriteLine(dateRegex.IsMatch(\"2024-12-25\")); // True\nConsole.WriteLine(dateRegex.IsMatch(\"2024-01-01\")); // True\nConsole.WriteLine(dateRegex.IsMatch(\"2024-13-01\")); // False"
     }
   },
   "5": {
@@ -56,7 +60,8 @@
       "python": "import re\n\nhex_regex = r\"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$\"\n\nprint(bool(re.match(hex_regex, \"#FFF\")))  # True\nprint(bool(re.match(hex_regex, \"#FFFFFF\")))  # True\nprint(bool(re.match(hex_regex, \"#GGGGGG\")))  # False",
       "java": "String hexRegex = \"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$\";\nPattern pattern = Pattern.compile(hexRegex);\n\nSystem.out.println(pattern.matcher(\"#FFF\").matches()); // true\nSystem.out.println(pattern.matcher(\"#FFFFFF\").matches()); // true",
       "php": "<?php\n$hexRegex = \"/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/\";\n\necho preg_match($hexRegex, \"#FFF\"); // 1\necho preg_match($hexRegex, \"#FFFFFF\"); // 1\n?>",
-      "ruby": "hex_regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/\n\nputs \"#FFF\".match?(hex_regex)  # true\nputs \"#FFFFFF\".match?(hex_regex)  # true"
+      "ruby": "hex_regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/\n\nputs \"#FFF\".match?(hex_regex)  # true\nputs \"#FFFFFF\".match?(hex_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring hexPattern = @\"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$\";\nRegex hexRegex = new Regex(hexPattern);\n\nConsole.WriteLine(hexRegex.IsMatch(\"#FFF\")); // True\nConsole.WriteLine(hexRegex.IsMatch(\"#FFFFFF\")); // True\nConsole.WriteLine(hexRegex.IsMatch(\"#a1b2c3\")); // True\nConsole.WriteLine(hexRegex.IsMatch(\"#GGGGGG\")); // False"
     }
   },
   "6": {
@@ -68,7 +73,8 @@
       "python": "import re\n\nusername_regex = r\"^[a-zA-Z0-9_-]{3,16}$\"\n\nprint(bool(re.match(username_regex, \"john_doe\")))  # True\nprint(bool(re.match(username_regex, \"ab\")))  # False",
       "java": "String usernameRegex = \"^[a-zA-Z0-9_-]{3,16}$\";\nPattern pattern = Pattern.compile(usernameRegex);\n\nSystem.out.println(pattern.matcher(\"john_doe\").matches()); // true\nSystem.out.println(pattern.matcher(\"ab\").matches()); // false",
       "php": "<?php\n$usernameRegex = \"/^[a-zA-Z0-9_-]{3,16}$/\";\n\necho preg_match($usernameRegex, \"john_doe\"); // 1\necho preg_match($usernameRegex, \"ab\"); // 0\n?>",
-      "ruby": "username_regex = /^[a-zA-Z0-9_-]{3,16}$/\n\nputs \"john_doe\".match?(username_regex)  # true\nputs \"ab\".match?(username_regex)  # false"
+      "ruby": "username_regex = /^[a-zA-Z0-9_-]{3,16}$/\n\nputs \"john_doe\".match?(username_regex)  # true\nputs \"ab\".match?(username_regex)  # false",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring usernamePattern = @\"^[a-zA-Z0-9_-]{3,16}$\";\nRegex usernameRegex = new Regex(usernamePattern);\n\nConsole.WriteLine(usernameRegex.IsMatch(\"john_doe\")); // True\nConsole.WriteLine(usernameRegex.IsMatch(\"user123\")); // True\nConsole.WriteLine(usernameRegex.IsMatch(\"ab\")); // False\nConsole.WriteLine(usernameRegex.IsMatch(\"user@name\")); // False"
     }
   },
   "7": {
@@ -80,7 +86,8 @@
       "python": "import re\n\nip_regex = r\"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$\"\n\nprint(bool(re.match(ip_regex, \"192.168.1.1\")))  # True\nprint(bool(re.match(ip_regex, \"256.1.1.1\")))  # False",
       "java": "String ipRegex = \"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$\";\nPattern pattern = Pattern.compile(ipRegex);\n\nSystem.out.println(pattern.matcher(\"192.168.1.1\").matches()); // true",
       "php": "<?php\n$ipRegex = \"/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/\";\n\necho preg_match($ipRegex, \"192.168.1.1\"); // 1\n?>",
-      "ruby": "ip_regex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/\n\nputs \"192.168.1.1\".match?(ip_regex)  # true"
+      "ruby": "ip_regex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/\n\nputs \"192.168.1.1\".match?(ip_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring ipPattern = @\"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$\";\nRegex ipRegex = new Regex(ipPattern);\n\nConsole.WriteLine(ipRegex.IsMatch(\"192.168.1.1\")); // True\nConsole.WriteLine(ipRegex.IsMatch(\"255.255.255.255\")); // True\nConsole.WriteLine(ipRegex.IsMatch(\"256.1.1.1\")); // False"
     }
   },
   "8": {
@@ -92,7 +99,8 @@
       "python": "import re\n\npassword_regex = r\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$\"\n\nprint(bool(re.match(password_regex, \"Password123!\")))  # True\nprint(bool(re.match(password_regex, \"weakpass\")))  # False",
       "java": "String passwordRegex = \"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[@$!%*?&])[A-Za-z\\\\d@$!%*?&]{8,}$\";\nPattern pattern = Pattern.compile(passwordRegex);\n\nSystem.out.println(pattern.matcher(\"Password123!\").matches()); // true",
       "php": "<?php\n$passwordRegex = \"/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/\";\n\necho preg_match($passwordRegex, \"Password123!\"); // 1\n?>",
-      "ruby": "password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/\n\nputs \"Password123!\".match?(password_regex)  # true"
+      "ruby": "password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/\n\nputs \"Password123!\".match?(password_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring passwordPattern = @\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$\";\nRegex passwordRegex = new Regex(passwordPattern);\n\nConsole.WriteLine(passwordRegex.IsMatch(\"Password123!\")); // True\nConsole.WriteLine(passwordRegex.IsMatch(\"weakpass\")); // False\nConsole.WriteLine(passwordRegex.IsMatch(\"NoSpecial1\")); // False"
     }
   },
   "9": {
@@ -104,7 +112,8 @@
       "python": "import re\n\ncc_regex = r\"^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$\"\n\nprint(bool(re.match(cc_regex, \"4532015112830366\")))  # True\nprint(bool(re.match(cc_regex, \"1234567890123456\")))  # False",
       "java": "String ccRegex = \"^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$\";\nPattern pattern = Pattern.compile(ccRegex);\n\nSystem.out.println(pattern.matcher(\"4532015112830366\").matches()); // true",
       "php": "<?php\n$ccRegex = \"/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$/\";\n\necho preg_match($ccRegex, \"4532015112830366\"); // 1\n?>",
-      "ruby": "cc_regex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$/\n\nputs \"4532015112830366\".match?(cc_regex)  # true"
+      "ruby": "cc_regex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$/\n\nputs \"4532015112830366\".match?(cc_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring ccPattern = @\"^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$\";\nRegex ccRegex = new Regex(ccPattern);\n\nConsole.WriteLine(ccRegex.IsMatch(\"4532015112830366\")); // True (Visa format)\nConsole.WriteLine(ccRegex.IsMatch(\"5425233430109903\")); // True (Mastercard format)\nConsole.WriteLine(ccRegex.IsMatch(\"1234567890123456\")); // False"
     }
   },
   "10": {
@@ -116,7 +125,8 @@
       "python": "import re\n\nhtml_regex = r\"<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)\"\n\nhtml = \"<div>Hello</div>\"\nmatch = re.search(html_regex, html, re.IGNORECASE)\nprint(match.group(0))  # <div>Hello</div>",
       "java": "String htmlRegex = \"<([a-z]+)([^<]+)*(?:>(.*)<\\\\/\\\\1>|\\\\s+\\\\/>)\";\nPattern pattern = Pattern.compile(htmlRegex, Pattern.CASE_INSENSITIVE);\n\nString html = \"<div>Hello</div>\";\nMatcher matcher = pattern.matcher(html);\nif (matcher.find()) {\n    System.out.println(matcher.group(0)); // <div>Hello</div>\n}",
       "php": "<?php\n$htmlRegex = \"/<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/i\";\n\n$html = \"<div>Hello</div>\";\npreg_match($htmlRegex, $html, $matches);\nprint_r($matches[0]); // <div>Hello</div>\n?>",
-      "ruby": "html_regex = /<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/i\n\nhtml = \"<div>Hello</div>\"\nmatch = html.match(html_regex)\nputs match[0]  # <div>Hello</div>"
+      "ruby": "html_regex = /<([a-z]+)([^<]+)*(?:>(.*)<\\/\\1>|\\s+\\/>)/i\n\nhtml = \"<div>Hello</div>\"\nmatch = html.match(html_regex)\nputs match[0]  # <div>Hello</div>",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring htmlPattern = @\"<([a-z]+)([^<]+)*(?:>(.*)</\\1>|\\s+/>)\";\nRegex htmlRegex = new Regex(htmlPattern, RegexOptions.IgnoreCase);\n\nstring html = \"<div>Hello</div>\";\nMatch match = htmlRegex.Match(html);\nConsole.WriteLine(match.Value); // <div>Hello</div>\n\nstring selfClosing = \"<img src='test.jpg' />\";\nConsole.WriteLine(htmlRegex.Match(selfClosing).Value); // <img src='test.jpg' />"
     }
   },
   "11": {
@@ -128,7 +138,8 @@
       "python": "import re\n\ntime_regex = r\"^([01]?[0-9]|2[0-3]):[0-5][0-9]$\"\n\nprint(bool(re.match(time_regex, \"09:30\")))  # True\nprint(bool(re.match(time_regex, \"24:00\")))  # False",
       "java": "String timeRegex = \"^([01]?[0-9]|2[0-3]):[0-5][0-9]$\";\nPattern pattern = Pattern.compile(timeRegex);\n\nSystem.out.println(pattern.matcher(\"09:30\").matches()); // true\nSystem.out.println(pattern.matcher(\"24:00\").matches()); // false",
       "php": "<?php\n$timeRegex = \"/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/\";\n\necho preg_match($timeRegex, \"09:30\"); // 1\necho preg_match($timeRegex, \"24:00\"); // 0\n?>",
-      "ruby": "time_regex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/\n\nputs \"09:30\".match?(time_regex)  # true\nputs \"24:00\".match?(time_regex)  # false"
+      "ruby": "time_regex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/\n\nputs \"09:30\".match?(time_regex)  # true\nputs \"24:00\".match?(time_regex)  # false",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring timePattern = @\"^([01]?[0-9]|2[0-3]):[0-5][0-9]$\";\nRegex timeRegex = new Regex(timePattern);\n\nConsole.WriteLine(timeRegex.IsMatch(\"09:30\")); // True\nConsole.WriteLine(timeRegex.IsMatch(\"23:59\")); // True\nConsole.WriteLine(timeRegex.IsMatch(\"24:00\")); // False\nConsole.WriteLine(timeRegex.IsMatch(\"12:60\")); // False"
     }
   },
   "12": {
@@ -140,7 +151,8 @@
       "python": "import re\n\npostnummer_regex = r\"^\\d{3}\\s?\\d{2}$\"\n\nprint(bool(re.match(postnummer_regex, \"123 45\")))  # True\nprint(bool(re.match(postnummer_regex, \"12345\")))  # True\nprint(bool(re.match(postnummer_regex, \"100 00\")))  # True",
       "java": "String postnummerRegex = \"^\\\\d{3}\\\\s?\\\\d{2}$\";\nPattern pattern = Pattern.compile(postnummerRegex);\n\nSystem.out.println(pattern.matcher(\"123 45\").matches()); // true\nSystem.out.println(pattern.matcher(\"12345\").matches()); // true",
       "php": "<?php\n$postnummerRegex = \"/^\\d{3}\\s?\\d{2}$/\";\n\necho preg_match($postnummerRegex, \"123 45\"); // 1\necho preg_match($postnummerRegex, \"12345\"); // 1\n?>",
-      "ruby": "postnummer_regex = /^\\d{3}\\s?\\d{2}$/\n\nputs \"123 45\".match?(postnummer_regex)  # true\nputs \"12345\".match?(postnummer_regex)  # true"
+      "ruby": "postnummer_regex = /^\\d{3}\\s?\\d{2}$/\n\nputs \"123 45\".match?(postnummer_regex)  # true\nputs \"12345\".match?(postnummer_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring postnummerPattern = @\"^\\d{3}\\s?\\d{2}$\";\nRegex postnummerRegex = new Regex(postnummerPattern);\n\nConsole.WriteLine(postnummerRegex.IsMatch(\"123 45\")); // True\nConsole.WriteLine(postnummerRegex.IsMatch(\"12345\")); // True\nConsole.WriteLine(postnummerRegex.IsMatch(\"100 00\")); // True\nConsole.WriteLine(postnummerRegex.IsMatch(\"1234\")); // False"
     }
   },
   "13": {
@@ -152,7 +164,8 @@
       "python": "import re\n\npersonnummer_regex = r\"^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$\"\n\nprint(bool(re.match(personnummer_regex, \"19900101-1234\")))  # True\nprint(bool(re.match(personnummer_regex, \"900101-1234\")))  # True\nprint(bool(re.match(personnummer_regex, \"20101301-1234\")))  # False",
       "java": "String personnummerRegex = \"^(19|20)?\\\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\\\d|3[01])[-+]?\\\\d{4}$\";\nPattern pattern = Pattern.compile(personnummerRegex);\n\nSystem.out.println(pattern.matcher(\"19900101-1234\").matches()); // true\nSystem.out.println(pattern.matcher(\"900101-1234\").matches()); // true",
       "php": "<?php\n$personnummerRegex = \"/^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$/\";\n\necho preg_match($personnummerRegex, \"19900101-1234\"); // 1\necho preg_match($personnummerRegex, \"900101-1234\"); // 1\n?>",
-      "ruby": "personnummer_regex = /^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$/\n\nputs \"19900101-1234\".match?(personnummer_regex)  # true\nputs \"900101-1234\".match?(personnummer_regex)  # true"
+      "ruby": "personnummer_regex = /^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$/\n\nputs \"19900101-1234\".match?(personnummer_regex)  # true\nputs \"900101-1234\".match?(personnummer_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring personnummerPattern = @\"^(19|20)?\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])[-+]?\\d{4}$\";\nRegex personnummerRegex = new Regex(personnummerPattern);\n\nConsole.WriteLine(personnummerRegex.IsMatch(\"19900101-1234\")); // True\nConsole.WriteLine(personnummerRegex.IsMatch(\"900101-1234\")); // True\nConsole.WriteLine(personnummerRegex.IsMatch(\"9001011234\")); // True\nConsole.WriteLine(personnummerRegex.IsMatch(\"20101301-1234\")); // False"
     }
   },
   "14": {
@@ -164,7 +177,8 @@
       "python": "import re\n\npath_regex = r\"^(?:[a-zA-Z]:\\\\|/)(?:[^\\\\/:*?\\\"<>|\\r\\n]+[\\\\/])*[^\\\\/:*?\\\"<>|\\r\\n]*$\"\n\nprint(bool(re.match(path_regex, \"C:\\\\Users\\\\file.txt\")))  # True\nprint(bool(re.match(path_regex, \"/home/user/file.txt\")))  # True",
       "java": "String pathRegex = \"^(?:[a-zA-Z]:\\\\\\\\|/)(?:[^\\\\\\\\/:*?\\\\\"<>|\\\\r\\\\n]+[\\\\\\\\/])*[^\\\\\\\\/:*?\\\\\"<>|\\\\r\\\\n]*$\";\nPattern pattern = Pattern.compile(pathRegex);\n\nSystem.out.println(pattern.matcher(\"C:\\\\Users\\\\file.txt\").matches()); // true",
       "php": "<?php\n$pathRegex = \"/^(?:[a-zA-Z]:\\\\\\\\|\\/)(?:[^\\\\\\\\\\/:*?\\\"<>|\\r\\n]+[\\\\\\\\\\/])*[^\\\\\\\\\\/:*?\\\"<>|\\r\\n]*$/\";\n\necho preg_match($pathRegex, \"C:\\\\Users\\\\file.txt\"); // 1\n?>",
-      "ruby": "path_regex = /^(?:[a-zA-Z]:\\\\|\\/)(?:[^\\\\\\/:*?\"<>|\\r\\n]+[\\\\\\/])*[^\\\\\\/:*?\"<>|\\r\\n]*$/\n\nputs \"C:\\\\Users\\\\file.txt\".match?(path_regex)  # true"
+      "ruby": "path_regex = /^(?:[a-zA-Z]:\\\\|\\/)(?:[^\\\\\\/:*?\"<>|\\r\\n]+[\\\\\\/])*[^\\\\\\/:*?\"<>|\\r\\n]*$/\n\nputs \"C:\\\\Users\\\\file.txt\".match?(path_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring pathPattern = @\"^(?:[a-zA-Z]:\\\\|/)(?:[^\\\\/:*?\"\"<>|\\r\\n]+[\\\\/])*[^\\\\/:*?\"\"<>|\\r\\n]*$\";\nRegex pathRegex = new Regex(pathPattern);\n\nConsole.WriteLine(pathRegex.IsMatch(@\"C:\\Users\\file.txt\")); // True\nConsole.WriteLine(pathRegex.IsMatch(\"/home/user/file.txt\")); // True\nConsole.WriteLine(pathRegex.IsMatch(\"invalid*file.txt\")); // False"
     }
   },
   "15": {
@@ -176,7 +190,8 @@
       "python": "import re\n\nmac_regex = r\"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$\"\n\nprint(bool(re.match(mac_regex, \"00:1A:2B:3C:4D:5E\")))  # True\nprint(bool(re.match(mac_regex, \"00-1A-2B-3C-4D-5E\")))  # True",
       "java": "String macRegex = \"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$\";\nPattern pattern = Pattern.compile(macRegex);\n\nSystem.out.println(pattern.matcher(\"00:1A:2B:3C:4D:5E\").matches()); // true",
       "php": "<?php\n$macRegex = \"/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/\";\n\necho preg_match($macRegex, \"00:1A:2B:3C:4D:5E\"); // 1\n?>",
-      "ruby": "mac_regex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/\n\nputs \"00:1A:2B:3C:4D:5E\".match?(mac_regex)  # true"
+      "ruby": "mac_regex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/\n\nputs \"00:1A:2B:3C:4D:5E\".match?(mac_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring macPattern = @\"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$\";\nRegex macRegex = new Regex(macPattern);\n\nConsole.WriteLine(macRegex.IsMatch(\"00:1A:2B:3C:4D:5E\")); // True\nConsole.WriteLine(macRegex.IsMatch(\"00-1A-2B-3C-4D-5E\")); // True\nConsole.WriteLine(macRegex.IsMatch(\"00:1A:2B:3C:4D\")); // False"
     }
   },
   "16": {
@@ -188,7 +203,8 @@
       "python": "import re\n\nmd_link_regex = r\"\\[([^\\]]+)\\]\\(([^\\)]+)\\)\"\n\ntext = \"Check [Google](https://google.com) and [GitHub](https://github.com)\"\nmatches = re.findall(md_link_regex, text)\n\nfor text, url in matches:\n    print(f\"Text: {text}, URL: {url}\")",
       "java": "String mdLinkRegex = \"\\\\[([^\\\\]]+)\\\\]\\\\(([^\\\\)]+)\\\\)\";\nPattern pattern = Pattern.compile(mdLinkRegex);\n\nString text = \"Check [Google](https://google.com)\";\nMatcher matcher = pattern.matcher(text);\n\nwhile (matcher.find()) {\n    System.out.println(\"Text: \" + matcher.group(1) + \", URL: \" + matcher.group(2));\n}",
       "php": "<?php\n$mdLinkRegex = \"/\\[([^\\]]+)\\]\\(([^\\)]+)\\)/\";\n\n$text = \"Check [Google](https://google.com)\";\npreg_match_all($mdLinkRegex, $text, $matches);\n\nforeach ($matches[1] as $i => $linkText) {\n    echo \"Text: $linkText, URL: {$matches[2][$i]}\\n\";\n}\n?>",
-      "ruby": "md_link_regex = /\\[([^\\]]+)\\]\\(([^\\)]+)\\)/\n\ntext = \"Check [Google](https://google.com)\"\ntext.scan(md_link_regex) do |link_text, url|\n    puts \"Text: #{link_text}, URL: #{url}\"\nend"
+      "ruby": "md_link_regex = /\\[([^\\]]+)\\]\\(([^\\)]+)\\)/\n\ntext = \"Check [Google](https://google.com)\"\ntext.scan(md_link_regex) do |link_text, url|\n    puts \"Text: #{link_text}, URL: #{url}\"\nend",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring mdLinkPattern = @\"\\[([^\\]]+)\\]\\(([^\\)]+)\\)\";\nRegex mdLinkRegex = new Regex(mdLinkPattern);\n\nstring text = \"Check [Google](https://google.com) and [GitHub](https://github.com)\";\nMatchCollection matches = mdLinkRegex.Matches(text);\n\nforeach (Match match in matches)\n{\n    Console.WriteLine($\"Text: {match.Groups[1].Value}, URL: {match.Groups[2].Value}\");\n}"
     }
   },
   "17": {
@@ -200,7 +216,8 @@
       "python": "import re\n\nwhitespace_regex = r\"\\s+\"\n\ntext = \"  Hello    world  \\n\\t  RegEx  \"\nnormalized = re.sub(whitespace_regex, \" \", text.strip())\nprint(normalized)  # \"Hello world RegEx\"\n\nwords = re.split(whitespace_regex, text.strip())\nprint(words)  # [\"Hello\", \"world\", \"RegEx\"]",
       "java": "String whitespaceRegex = \"\\\\s+\";\n\nString text = \"  Hello    world  \\n\\t  RegEx  \";\nString normalized = text.trim().replaceAll(whitespaceRegex, \" \");\nSystem.out.println(normalized); // \"Hello world RegEx\"\n\nString[] words = text.trim().split(whitespaceRegex);\nSystem.out.println(Arrays.toString(words)); // [Hello, world, RegEx]",
       "php": "<?php\n$whitespaceRegex = \"/\\s+/\";\n\n$text = \"  Hello    world  \\n\\t  RegEx  \";\n$normalized = preg_replace($whitespaceRegex, \" \", trim($text));\necho $normalized; // \"Hello world RegEx\"\n\n$words = preg_split($whitespaceRegex, trim($text));\nprint_r($words); // Array([0] => Hello [1] => world [2] => RegEx)\n?>",
-      "ruby": "whitespace_regex = /\\s+/\n\ntext = \"  Hello    world  \\n\\t  RegEx  \"\nnormalized = text.strip.gsub(whitespace_regex, \" \")\nputs normalized  # \"Hello world RegEx\"\n\nwords = text.strip.split(whitespace_regex)\nputs words.inspect  # [\"Hello\", \"world\", \"RegEx\"]"
+      "ruby": "whitespace_regex = /\\s+/\n\ntext = \"  Hello    world  \\n\\t  RegEx  \"\nnormalized = text.strip.gsub(whitespace_regex, \" \")\nputs normalized  # \"Hello world RegEx\"\n\nwords = text.strip.split(whitespace_regex)\nputs words.inspect  # [\"Hello\", \"world\", \"RegEx\"]",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring whitespacePattern = @\"\\s+\";\nRegex whitespaceRegex = new Regex(whitespacePattern);\n\nstring text = \"  Hello    world  \\n\\t  RegEx  \";\nstring normalized = whitespaceRegex.Replace(text.Trim(), \" \");\nConsole.WriteLine(normalized); // \"Hello world RegEx\"\n\nstring[] words = whitespaceRegex.Split(text.Trim());\nConsole.WriteLine(string.Join(\", \", words)); // Hello, world, RegEx"
     }
   },
   "18": {
@@ -212,7 +229,8 @@
       "python": "import re\n\nsemver_regex = r\"^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$\"\n\nprint(bool(re.match(semver_regex, \"1.0.0\")))  # True\nprint(bool(re.match(semver_regex, \"2.1.3-alpha\")))  # True",
       "java": "String semverRegex = \"^(0|[1-9]\\\\d*)\\\\.(0|[1-9]\\\\d*)\\\\.(0|[1-9]\\\\d*)(?:-((?:0|[1-9]\\\\d*|\\\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\\\.(?:0|[1-9]\\\\d*|\\\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\\\+([0-9a-zA-Z-]+(?:\\\\.[0-9a-zA-Z-]+)*))?$\";\nPattern pattern = Pattern.compile(semverRegex);\n\nSystem.out.println(pattern.matcher(\"1.0.0\").matches()); // true",
       "php": "<?php\n$semverRegex = \"/^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/\";\n\necho preg_match($semverRegex, \"1.0.0\"); // 1\n?>",
-      "ruby": "semver_regex = /^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/\n\nputs \"1.0.0\".match?(semver_regex)  # true"
+      "ruby": "semver_regex = /^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/\n\nputs \"1.0.0\".match?(semver_regex)  # true",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring semverPattern = @\"^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$\";\nRegex semverRegex = new Regex(semverPattern);\n\nConsole.WriteLine(semverRegex.IsMatch(\"1.0.0\")); // True\nConsole.WriteLine(semverRegex.IsMatch(\"2.1.3-alpha\")); // True\nConsole.WriteLine(semverRegex.IsMatch(\"1.0.0-beta.1+build.123\")); // True"
     }
   },
   "19": {
@@ -224,7 +242,8 @@
       "python": "import re\n\nnumber_regex = r\"-?\\d+\\.?\\d*\"\n\ntext = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\"\nnumbers = re.findall(number_regex, text)\nprint(numbers)  # ['-5.5', '29.99', '42']\n\ntotal = sum(float(n) for n in numbers)\nprint(total)  # 66.49",
       "java": "String numberRegex = \"-?\\\\d+\\\\.?\\\\d*\";\nPattern pattern = Pattern.compile(numberRegex);\n\nString text = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\";\nMatcher matcher = pattern.matcher(text);\n\nList<String> numbers = new ArrayList<>();\nwhile (matcher.find()) {\n    numbers.add(matcher.group());\n}\nSystem.out.println(numbers); // [-5.5, 29.99, 42]",
       "php": "<?php\n$numberRegex = \"/-?\\d+\\.?\\d*/\";\n\n$text = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\";\npreg_match_all($numberRegex, $text, $matches);\nprint_r($matches[0]); // Array([0] => -5.5 [1] => 29.99 [2] => 42)\n?>",
-      "ruby": "number_regex = /-?\\d+\\.?\\d*/\n\ntext = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\"\nnumbers = text.scan(number_regex)\nputs numbers.inspect  # [\"-5.5\", \"29.99\", \"42\"]"
+      "ruby": "number_regex = /-?\\d+\\.?\\d*/\n\ntext = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\"\nnumbers = text.scan(number_regex)\nputs numbers.inspect  # [\"-5.5\", \"29.99\", \"42\"]",
+      "csharp": "using System.Text.RegularExpressions;\nusing System.Linq;\n\nstring numberPattern = @\"-?\\d+\\.?\\d*\";\nRegex numberRegex = new Regex(numberPattern);\n\nstring text = \"Temperature: -5.5°C, Price: $29.99, Quantity: 42\";\nMatchCollection matches = numberRegex.Matches(text);\nvar numbers = matches.Select(m => m.Value).ToArray();\nConsole.WriteLine(string.Join(\", \", numbers)); // -5.5, 29.99, 42\n\ndouble sum = numbers.Sum(n => double.Parse(n));\nConsole.WriteLine(sum); // 66.49"
     }
   },
   "20": {
@@ -236,7 +255,8 @@
       "python": "import re\n\ncamel_regex = r\"([a-z0-9])([A-Z])\"\n\ndef camel_to_snake(text):\n    return re.sub(camel_regex, r\"\\1_\\2\", text).lower()\n\nprint(camel_to_snake(\"myVariableName\"))  # \"my_variable_name\"\nprint(camel_to_snake(\"userId\"))  # \"user_id\"",
       "java": "String camelRegex = \"([a-z0-9])([A-Z])\";\n\npublic static String camelToSnake(String str) {\n    return str.replaceAll(camelRegex, \"$1_$2\").toLowerCase();\n}\n\nSystem.out.println(camelToSnake(\"myVariableName\")); // \"my_variable_name\"",
       "php": "<?php\n$camelRegex = \"/([a-z0-9])([A-Z])/\";\n\nfunction camelToSnake($str) {\n    global $camelRegex;\n    return strtolower(preg_replace($camelRegex, \"$1_$2\", $str));\n}\n\necho camelToSnake(\"myVariableName\"); // \"my_variable_name\"\n?>",
-      "ruby": "camel_regex = /([a-z0-9])([A-Z])/\n\ndef camel_to_snake(str)\n    str.gsub(camel_regex, '\\1_\\2').downcase\nend\n\nputs camel_to_snake(\"myVariableName\")  # \"my_variable_name\""
+      "ruby": "camel_regex = /([a-z0-9])([A-Z])/\n\ndef camel_to_snake(str)\n    str.gsub(camel_regex, '\\1_\\2').downcase\nend\n\nputs camel_to_snake(\"myVariableName\")  # \"my_variable_name\"",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring camelPattern = @\"([a-z0-9])([A-Z])\";\nRegex camelRegex = new Regex(camelPattern);\n\nstring CamelToSnake(string str)\n{\n    return camelRegex.Replace(str, \"$1_$2\").ToLower();\n}\n\nConsole.WriteLine(CamelToSnake(\"myVariableName\")); // \"my_variable_name\"\nConsole.WriteLine(CamelToSnake(\"userId\")); // \"user_id\"\nConsole.WriteLine(CamelToSnake(\"HTTPResponse\")); // \"httpresponse\""
     }
   },
   "21": {
@@ -248,7 +268,8 @@
       "python": "import re\n\nhtml_tag_regex = r\"<[^>]*>\"\n\nhtml = \"<p>Hello <strong>world</strong>!</p>\"\nplain_text = re.sub(html_tag_regex, \"\", html)\nprint(plain_text)  # \"Hello world!\"",
       "java": "String htmlTagRegex = \"<[^>]*>\";\n\nString html = \"<p>Hello <strong>world</strong>!</p>\";\nString plainText = html.replaceAll(htmlTagRegex, \"\");\nSystem.out.println(plainText); // \"Hello world!\"",
       "php": "<?php\n$htmlTagRegex = \"/<[^>]*>/\";\n\n$html = \"<p>Hello <strong>world</strong>!</p>\";\n$plainText = preg_replace($htmlTagRegex, \"\", $html);\necho $plainText; // \"Hello world!\"\n?>",
-      "ruby": "html_tag_regex = /<[^>]*>/\n\nhtml = \"<p>Hello <strong>world</strong>!</p>\"\nplain_text = html.gsub(html_tag_regex, \"\")\nputs plain_text  # \"Hello world!\""
+      "ruby": "html_tag_regex = /<[^>]*>/\n\nhtml = \"<p>Hello <strong>world</strong>!</p>\"\nplain_text = html.gsub(html_tag_regex, \"\")\nputs plain_text  # \"Hello world!\"",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring htmlTagPattern = @\"<[^>]*>\";\nRegex htmlTagRegex = new Regex(htmlTagPattern);\n\nstring html = \"<p>Hello <strong>world</strong>!</p>\";\nstring plainText = htmlTagRegex.Replace(html, \"\");\nConsole.WriteLine(plainText); // \"Hello world!\"\n\nstring complex = \"<div class='test'>Text <span>here</span></div>\";\nConsole.WriteLine(htmlTagRegex.Replace(complex, \"\")); // \"Text here\""
     }
   },
   "22": {
@@ -260,7 +281,8 @@
       "python": "import re\n\nduplicate_regex = r\"\\b(\\w+)\\s+\\1\\b\"\n\ntext = \"This is is a test test of the the duplicate finder.\"\nduplicates = re.findall(duplicate_regex, text, re.IGNORECASE)\nprint(duplicates)  # ['is', 'test', 'the']\n\nfixed = re.sub(duplicate_regex, r\"\\1\", text, flags=re.IGNORECASE)\nprint(fixed)  # \"This is a test of the duplicate finder.\"",
       "java": "String duplicateRegex = \"\\\\b(\\\\w+)\\\\s+\\\\1\\\\b\";\nPattern pattern = Pattern.compile(duplicateRegex, Pattern.CASE_INSENSITIVE);\n\nString text = \"This is is a test test of the the duplicate finder.\";\nMatcher matcher = pattern.matcher(text);\n\nString fixed = matcher.replaceAll(\"$1\");\nSystem.out.println(fixed); // \"This is a test of the duplicate finder.\"",
       "php": "<?php\n$duplicateRegex = \"/\\b(\\w+)\\s+\\1\\b/i\";\n\n$text = \"This is is a test test of the the duplicate finder.\";\npreg_match_all($duplicateRegex, $text, $matches);\nprint_r($matches[0]); // Array([0] => is is [1] => test test [2] => the the)\n\n$fixed = preg_replace($duplicateRegex, \"$1\", $text);\necho $fixed; // \"This is a test of the duplicate finder.\"\n?>",
-      "ruby": "duplicate_regex = /\\b(\\w+)\\s+\\1\\b/i\n\ntext = \"This is is a test test of the the duplicate finder.\"\nduplicates = text.scan(duplicate_regex).flatten\nputs duplicates.inspect  # [\"is\", \"test\", \"the\"]\n\nfixed = text.gsub(duplicate_regex, '\\1')\nputs fixed  # \"This is a test of the duplicate finder.\""
+      "ruby": "duplicate_regex = /\\b(\\w+)\\s+\\1\\b/i\n\ntext = \"This is is a test test of the the duplicate finder.\"\nduplicates = text.scan(duplicate_regex).flatten\nputs duplicates.inspect  # [\"is\", \"test\", \"the\"]\n\nfixed = text.gsub(duplicate_regex, '\\1')\nputs fixed  # \"This is a test of the duplicate finder.\"",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring duplicatePattern = @\"\\b(\\w+)\\s+\\1\\b\";\nRegex duplicateRegex = new Regex(duplicatePattern, RegexOptions.IgnoreCase);\n\nstring text = \"This is is a test test of the the duplicate finder.\";\nMatchCollection matches = duplicateRegex.Matches(text);\nConsole.WriteLine(string.Join(\", \", matches.Select(m => m.Value))); // is is, test test, the the\n\nstring fixed = duplicateRegex.Replace(text, \"$1\");\nConsole.WriteLine(fixed); // \"This is a test of the duplicate finder.\""
     }
   },
   "23": {
@@ -272,7 +294,8 @@
       "python": "import re\n\ncurrency_regex = r\"^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$\"\n\nprint(bool(re.match(currency_regex, \"$1,234.56\")))  # True\nprint(bool(re.match(currency_regex, \"1234\")))  # True\nprint(bool(re.match(currency_regex, \"$1,23.45\")))  # False",
       "java": "String currencyRegex = \"^\\\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\\\.[0-9]{2})?$\";\nPattern pattern = Pattern.compile(currencyRegex);\n\nSystem.out.println(pattern.matcher(\"$1,234.56\").matches()); // true\nSystem.out.println(pattern.matcher(\"$1,23.45\").matches()); // false",
       "php": "<?php\n$currencyRegex = \"/^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$/\";\n\necho preg_match($currencyRegex, \"$1,234.56\"); // 1\necho preg_match($currencyRegex, \"$1,23.45\"); // 0\n?>",
-      "ruby": "currency_regex = /^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$/\n\nputs \"$1,234.56\".match?(currency_regex)  # true\nputs \"$1,23.45\".match?(currency_regex)  # false"
+      "ruby": "currency_regex = /^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$/\n\nputs \"$1,234.56\".match?(currency_regex)  # true\nputs \"$1,23.45\".match?(currency_regex)  # false",
+      "csharp": "using System.Text.RegularExpressions;\n\nstring currencyPattern = @\"^\\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\\.[0-9]{2})?$\";\nRegex currencyRegex = new Regex(currencyPattern);\n\nConsole.WriteLine(currencyRegex.IsMatch(\"$1,234.56\")); // True\nConsole.WriteLine(currencyRegex.IsMatch(\"1234\")); // True\nConsole.WriteLine(currencyRegex.IsMatch(\"$1,000,000.00\")); // True\nConsole.WriteLine(currencyRegex.IsMatch(\"$1,23.45\")); // False"
     }
   },
   "24": {
@@ -284,7 +307,8 @@
       "python": "import re\n\nlookaround_regex = r\"(?<=@)\\w+(?=\\.com)\"\n\nemail = \"Contact: user@example.com or admin@test.com\"\ndomains = re.findall(lookaround_regex, email)\nprint(domains)  # ['example', 'test']\n\n# Lookarounds don't consume characters\n# So the match is just the domain name",
       "java": "String lookaroundRegex = \"(?<=@)\\\\w+(?=\\\\.com)\";\nPattern pattern = Pattern.compile(lookaroundRegex);\n\nString email = \"Contact: user@example.com or admin@test.com\";\nMatcher matcher = pattern.matcher(email);\n\nList<String> domains = new ArrayList<>();\nwhile (matcher.find()) {\n    domains.add(matcher.group());\n}\nSystem.out.println(domains); // [example, test]",
       "php": "<?php\n$lookaroundRegex = \"/(?<=@)\\w+(?=\\.com)/\";\n\n$email = \"Contact: user@example.com or admin@test.com\";\npreg_match_all($lookaroundRegex, $email, $matches);\nprint_r($matches[0]); // Array([0] => example [1] => test)\n\n// Lookarounds are zero-width assertions\n// They don't include @ or .com in the match\n?>",
-      "ruby": "lookaround_regex = /(?<=@)\\w+(?=\\.com)/\n\nemail = \"Contact: user@example.com or admin@test.com\"\ndomains = email.scan(lookaround_regex)\nputs domains.inspect  # [\"example\", \"test\"]\n\n# The beauty of lookarounds: they assert without consuming"
+      "ruby": "lookaround_regex = /(?<=@)\\w+(?=\\.com)/\n\nemail = \"Contact: user@example.com or admin@test.com\"\ndomains = email.scan(lookaround_regex)\nputs domains.inspect  # [\"example\", \"test\"]\n\n# The beauty of lookarounds: they assert without consuming",
+      "csharp": "using System.Text.RegularExpressions;\nusing System.Linq;\n\nstring lookaroundPattern = @\"(?<=@)\\w+(?=\\.com)\";\nRegex lookaroundRegex = new Regex(lookaroundPattern);\n\nstring email = \"Contact: user@example.com or admin@test.com\";\nMatchCollection matches = lookaroundRegex.Matches(email);\nvar domains = matches.Select(m => m.Value).ToArray();\nConsole.WriteLine(string.Join(\", \", domains)); // example, test\n\n// Lookarounds are zero-width assertions\n// They don't include @ or .com in the match"
     }
   }
 }
